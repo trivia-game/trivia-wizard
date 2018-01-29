@@ -2,25 +2,32 @@ body{
   background-color: black;
   color: bisque;
 }
+
 header{
   width: 100%;
   text-align: center;
   font-size: 23px;
   background-color: rgb(65, 4, 100);
   color: blanchedalmond;
-  padding-bottom: 23px;
+  padding-bottom: 50px;
+  padding-top: 30px;
+  margin-bottom: 25px;
 }
+
 h1{
   padding: 0;
   display: inline;
 }
+
 nav{
   float: right;
   padding: 20px;
 }
+
 nav a{
   color: rgb(207, 88, 20);
 }
+
 section {
   display: inline-block;
   width: 60%;
@@ -28,10 +35,25 @@ section {
   padding-right: 20%;
   align-content: center;
 }
+form{
+  padding: 0%;
+  height: 150px;
+  background-color: aqua;
+}
 .box{
-  display: inline-block;
-  padding: 16px;
-  background-color: brown;
   display: block;
-  align-content: center;
+  padding: 10%;
+  background-color: brown;
+  height: 20%;
+}
+form label{
+  display: block;
+  font-size: 30px;
+  text-align: center;
+}
+form input{
+  width: 33%;
+  display: block;
+  text-align: center;
+  margin-left: 34%;
 }
