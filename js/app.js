@@ -4,6 +4,7 @@ var formEl = document.getElementById('login-form');
 var playGameSectionEl = document.getElementById('play-button');
 
 User.allUsers = [];
+User.currentUser = 0;
 
 // User constructor function
 function User(username, password) {
@@ -23,16 +24,18 @@ function login(e) {
   checkLocalStorage();
   new User(name, password);
 
-  localStorage.setItem('info', JSON.stringify(User.allUsers));
+  localStorage.setItem('allUsers', JSON.stringify(User.allUsers));
 }
 
 
 function checkLocalStorage() {
   if (localStorage.info) {
-    JSON.parse(localStorage.getItem('info'));
+    JSON.parse(localStorage.getItem('allUsers'));
 
     for (var x in User.allUsers) {
       if (User.allUsers[x].name === name) {
+        User.currentUser = x;
+        localStorage.setItem('currentUser', JSON.stringify(User.currentUser));
         displayButton();
       }
     }
