@@ -3,14 +3,35 @@ body{
   color: bisque;
 }
 header{
-  display: inline-block;
   width: 100%;
   text-align: center;
   font-size: 23px;
   background-color: rgb(65, 4, 100);
   color: blanchedalmond;
+  padding-bottom: 23px;
+}
+h1{
+  padding: 0;
+  display: inline;
 }
 nav{
-  padding: 0;
   float: right;
+  padding: 20px;
+}
+nav a{
+  color: rgb(207, 88, 20);
+}
+section {
+  display: inline-block;
+  width: 60%;
+  padding-left: 20%;
+  padding-right: 20%;
+  align-content: center;
+}
+.box{
+  display: inline-block;
+  padding: 16px;
+  background-color: brown;
+  display: block;
+  align-content: center;
 }
