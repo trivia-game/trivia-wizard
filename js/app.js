@@ -18,7 +18,7 @@ formEl.addEventListener('submit', login);
 // callback function to login form
 function login(e) {
   e.preventDefault();
-  var name = e.target.name.value;
+  var name = e.target.userName.value;
   var password = e.target.password.value;
 
   checkLocalStorage();
