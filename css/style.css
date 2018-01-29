@@ -1,0 +1,16 @@
+body{
+  background-color: black;
+  color: bisque;
+}
+header{
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  font-size: 23px;
+  background-color: rgb(65, 4, 100);
+  color: blanchedalmond;
+}
+nav{
+  padding: 0;
+  float: right;
+}
