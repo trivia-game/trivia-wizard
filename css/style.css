@@ -14,21 +14,31 @@ header{
   text-align: center;
   font-size: 23px;
   font-family: 'Fugaz One', cursive;
-  background-color: rgb(65, 4, 100);
+  background-color:  #0c023d;
   color: blanchedalmond;
   padding-bottom: 50px;
   padding-top: 30px;
   margin-bottom: 25px;
 }
-
+header img{
+  width: 200px;
+  display: flex;
+  margin-left: 500px;
+ border: #0c023d, solid;
+}
 h1{
-  padding: 0;
-  display: inline;
+ display: inline;
+ position: absolute;
+ top: 40px;
+ left: 700px;
 }
 
 nav{
   float: right;
   padding: 20px;
+  position: absolute;
+  top: 40px;
+  right: 20px;
 }
 
 nav a{
