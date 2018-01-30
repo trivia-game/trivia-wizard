@@ -106,6 +106,13 @@ footer{
 }
 /* Play Game Button */
 section#play-button button{
-  width: 40%;
+  width: 300px;
+  height: 80px;
+  margin: 20px 20px 20px 10px;
+  font-size: 20px;
+  background-color: blueviolet;
+  color: blanchedalmond;
+  border-radius: 15px;
+  vertical-align: middle;
 }
 /* Game page starts here!! */
