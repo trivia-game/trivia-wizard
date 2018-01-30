@@ -8,6 +8,9 @@ var questionCounter = 0;
 var sectionEl = document.getElementById('questions');
 var divQuestionEl = document.getElementById('question');
 var divAnswerEl = document.getElementById('answers');
+var divAnswerElAB = document.getElementById('answersAB');
+var divAnswerElCD = document.getElementById('answersCD');
+
 var rand = 0;
 User.currentUser = {name: '', score: 0};
 function User(username, password) {
@@ -95,7 +98,11 @@ function gameQuestions() {
     button.setAttribute('name', answerArray[i]);
     console.log(button);
     button.innerHTML = '<span>' + letterIndex + '</span>' + answerArray[i];
-    divAnswerEl.appendChild(button);
+    if (i === 0 || i === 1) {
+      divAnswerElAB.appendChild(button);
+    } else if (i === 2 || i === 3) {
+      divAnswerElCD.appendChild(button);
+    }
   }
 }
 
@@ -122,7 +129,9 @@ function answerButtonHandler(e) {
   //save currentUser to localStorage
   saveCurrentUser();
   divQuestionEl.innerHTML = '';
-  divAnswerEl.innerHTML = '';
+  divAnswerElAB.innerHTML = '';
+  divAnswerElCD.innerHTML = '';
+  // divAnswerEl.innerHTML = '';
   Question.allQuestions.splice(rand, 1);
   gameQuestions();
 }
