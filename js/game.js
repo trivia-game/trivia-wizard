@@ -10,6 +10,7 @@ var divQuestionEl = document.getElementById('question');
 var divAnswerEl = document.getElementById('answers');
 var divAnswerElAB = document.getElementById('answersAB');
 var divAnswerElCD = document.getElementById('answersCD');
+var getNextQuestion = document.getElementById('next-question');
 
 var rand = 0;
 User.currentUser = {name: '', score: 0};
@@ -70,6 +71,7 @@ function shuffle(array) {
 
 // Main game question function
 function gameQuestions() {
+  getNextQuestion.innerHTML = '';
   questionCounter += 1;
   console.log(questionCounter);
   // pulling a random number from our array of questions
@@ -122,11 +124,14 @@ function answerButtonHandler(e) {
     //save currentUser to localStorage
     saveCurrentUser();
 
-    divQuestionEl.innerHTML = '';
-    divAnswerElAB.innerHTML = '';
-    divAnswerElCD.innerHTML = '';
     Question.allQuestions.splice(rand, 1);
-    gameQuestions();
+
+    // creates button for next question
+    var nextQuestionBtn = document.createElement('button');
+    getNextQuestion.textContent = 'Next Question';
+    getNextQuestion.appendChild(nextQuestionBtn);
+    nextQuestionBtn.addEventListener('click', nextQuestionHandler);
+
   }else if(questionCounter === 3){
     alert('you have reached max questions.');
     endingGame();
@@ -137,6 +142,13 @@ function answerButtonHandler(e) {
   }
 }
 
+// 
+function nextQuestionHandler(){
+  divQuestionEl.innerHTML = '';
+  divAnswerElAB.innerHTML = '';
+  divAnswerElCD.innerHTML = '';
+  gameQuestions();
+}
 
 function checkSavedCurrentUser(){
   var retrieve = JSON.parse(localStorage.getItem('currentUser'));
@@ -175,7 +187,6 @@ function endingGame(){
   resetCurrentUserScore();
   saveCurrentUser();
 
-
 }
 function pageReload(){
   location.reload();
@@ -184,8 +195,6 @@ function pageReload(){
 function resetCurrentUserScore(){
   User.currentUser['score'] = 0;
 }
-
-
 
 // calling the main game function on page load
 gameQuestions();
