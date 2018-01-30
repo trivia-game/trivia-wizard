@@ -5,8 +5,10 @@ Question.allQuestions = [];
 
 // variables accessing elements in the HTML
 var sectionEl = document.getElementById('questions');
-var formEl = document.getElementById('answers');
-var divEl = document.getElementById('test');
+var divQuestionEl = document.getElementById('question');
+var divAnswerEl = document.getElementById('answers');
+var rand = 0;
+
 
 // Constructor function
 function Question(question, answer, setOfAnswers) {
@@ -54,14 +56,14 @@ function shuffle(array) {
 // Main game question function
 function gameQuestions() {
   // pulling a random number from our array of questions
-  var rand = randomNumGenerator(0, Question.allQuestions.length - 1);
+  rand = randomNumGenerator(0, Question.allQuestions.length - 1);
   var q1 = Question.allQuestions[rand];
   console.log(q1.question);
   var pEl = document.createElement('p');
   console.log(pEl);
   pEl.textContent = q1.question;
   //appending random question to an element in game.html
-  divEl.appendChild(pEl);
+  divQuestionEl.appendChild(pEl);
   // shuffling the array of possible answer so that they appear in a random order and assigning to a variable
   var answerArray = shuffle(q1.setOfAnswers);
   // for loop to assign a letter to each question in the correct order
@@ -79,20 +81,22 @@ function gameQuestions() {
     // creating button elements for each letter/answer, assigning the value of an answer and appending to the form element that holds the buttons/answers
     var button = document.createElement('button');
     button.setAttribute('name', answerArray[i]);
+    console.log(button);
     button.innerHTML = '<span>' + letterIndex + '</span>' + answerArray[i];
-    formEl.appendChild(button);
+    divAnswerEl.appendChild(button);
   }
 }
 
 // Event Listener on form
-formEl.addEventListener('submit', answerButtonHandler);
+divAnswerEl.addEventListener('click', answerButtonHandler);
 
 //
 function answerButtonHandler(e) {
-  e.preventDefault();
   console.log(e);
-  var target = e.target.answerArray[i].value;
-  console.log(target);
+  var target = e.target.name;
+  if (Question.allQuestions[rand].answer === target) {
+    console.log("true");
+  }
 }
 
 
