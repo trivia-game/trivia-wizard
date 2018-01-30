@@ -2,11 +2,11 @@
 
 var formEl = document.getElementById('login-form');
 var playGameSectionEl = document.getElementById('play-button');
-
 User.allUsers = [];
+checkLocalStorage();
+
 // User.currentUser.index = 0;
 User.currentUserName = '';
-// User.currentUser.password = '';
 
 // User constructor function
 function User(username, password) {
@@ -24,40 +24,39 @@ function loginHandler(e) {
   var password = e.target.password.value;
   User.currentUserName = name;
 
-  if (User.allUsers.length === 0) {
-    new User(name, password);
-  } else {
-    for (var x = 0; x < User.allUsers.length; x++) {
-      console.log('hello');
-      if (User.allUsers[x].username === name) {
-        greeting();
-        console.log('hello2');
-      } else {
-        new User(name, password);
-        console.log('hello3');
-        localStorage.setItem('allUsers', JSON.stringify(User.allUsers));
 
-      }
+  for(var x = 0; x < User.allUsers.length; x++) {
+    if(User.allUsers[x].username === name) {
+      saveCurrentUser();
+      welcomeBackGreeting();
+      break;
     }
-  } 
+  }
+  console.log(x);
+  if (x === User.allUsers.length){
+    new User(name, password);
+    saveToLocalstorage();
+    saveCurrentUser();
+    greeting();
+  }
 
   checkLocalStorage();
   displayButton();
+}
 
+function saveToLocalstorage(){
+  localStorage.setItem('allUsers', JSON.stringify(User.allUsers));
 }
 
 
 function checkLocalStorage() {
-  if (localStorage.allUsers) {
-    User.allUsers = JSON.parse(localStorage.getItem('allUsers'));
-
-    for (var x = 0; x < User.allUsers.length; x++) {
-      console.log(User.currentUserName);
-      if (User.allUsers[x].username === User.currentUserName) {
-        localStorage.setItem('currentUser', JSON.stringify(User.allUsers[x]));
-      }
+  if(localStorage.allUsers) {
+    var users = JSON.parse(localStorage.getItem('allUsers'));
+    for(var i in users){
+      User.allUsers.push(users[i]);
     }
   }
+  console.log('after checkLocalStorage: ' + User.allUsers);
 }
 
 function displayButton() {
@@ -70,5 +69,16 @@ function greeting() {
   formEl.innerHTML = '';
   var h3El = document.createElement('h3');
   h3El.textContent = 'Hello ' + User.currentUserName;
-  formEl.appendChild('h3El');
+  formEl.appendChild(h3El);
+}
+
+function welcomeBackGreeting() {
+  formEl.innerHTML = '';
+  var h3El = document.createElement('h3');
+  h3El.textContent = 'Welcome Back! ' + User.currentUserName;
+  formEl.appendChild(h3El);
+}
+
+function saveCurrentUser() {
+  localStorage.setItem('currentUser', JSON.stringify(User.currentUserName));
 }
