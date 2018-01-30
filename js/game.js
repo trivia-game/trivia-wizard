@@ -115,7 +115,9 @@ divAnswerEl.addEventListener('click', answerButtonHandler);
 function answerButtonHandler(e) {
   console.log(e);
   var target = e.target.name;
-
+  if (!e.target.name) {
+    return;
+  }
   if (Question.allQuestions[rand].answer === target) {
     User.currentUser['score'] += 1;
 
