@@ -116,7 +116,7 @@ function answerButtonHandler(e) {
   console.log(e);
   var target = e.target.name;
 
-  if (Question.allQuestions[rand].answer === target && questionCounter < 3) {
+  if (Question.allQuestions[rand].answer === target) {
     User.currentUser['score'] += 1;
 
     //save currentUser to localStorage
@@ -127,15 +127,17 @@ function answerButtonHandler(e) {
     divAnswerElCD.innerHTML = '';
     Question.allQuestions.splice(rand, 1);
     gameQuestions();
-  }else if(questionCounter === 3){
-    alert('you have reached max questions.');
-    endingGame();
+    if(questionCounter === 4){
+      alert('you have reached the max number of question');
+      endingGame();
+    }
   }else{
     console.log('incorrect');
     //ending game
     endingGame();
   }
 }
+
 
 
 function checkSavedCurrentUser(){
