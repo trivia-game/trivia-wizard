@@ -32,7 +32,7 @@ function randomNumGenerator(min, max) {
 // Fisher-Yates Shuffle gives us a random order of an array
 function shuffle(array) {
   var currentIndex = array.length;
-  var temporaryValue; 
+  var temporaryValue;
   var randomIndex;
 
   // While there remain elements to shuffle...
