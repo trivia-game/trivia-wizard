@@ -16,7 +16,7 @@ function Question(question, answer, setOfAnswers) {
   Question.allQuestions.push(this);
 }
 
-// New Instances of the constructor 
+// New Instances of the constructor
 new Question('What movie won best picture at the 2017 Academy Awards?', 'Moonlight', ['Moonlight', 'La La Land', 'Manchester by the Sea', 'Fences']);
 new Question('In the movie The Terminator, what is the name of the company that created Skynet?', 'Cyberdyne Systems', ['Cyberdyne Systems', 'Code Fellows', 'Multi-National United', 'Tetravaal']);
 new Question('Emma Watson is known for playing which character in Harry Potter?', 'Hermione Granger', ['Hermione Granger', 'Luna Lovegood', 'Bellatrix Lestrange', 'Nymphadora Lupin']);
@@ -24,7 +24,7 @@ new Question('Bruce Banner turns into what fictional superhero when he becomes a
 new Question('Which actor played Marty McFly in the 1980\'s sci-fi classic Back to the Future?', 'Michael J. Fox', ['Michael J. Fox', 'John Cusak', 'Tom Cruise', 'Michael Keaton']);
 new Question('Tyler Durden is a fictional character appearing as the central protagonist and antagonist in what 1999 american film?', 'Fight Club', ['Fight Club', 'The Matrix', 'The Green Mile', 'The Sixth Sense']);
 
-// random number generator 
+// random number generator
 function randomNumGenerator(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
@@ -32,7 +32,7 @@ function randomNumGenerator(min, max) {
 // Fisher-Yates Shuffle gives us a random order of an array
 function shuffle(array) {
   var currentIndex = array.length;
-  var temporaryValue; 
+  var temporaryValue;
   var randomIndex;
 
   // While there remain elements to shuffle...
@@ -68,20 +68,33 @@ function gameQuestions() {
   for (var i = 0; i < answerArray.length; i++) {
     var letterIndex;
     if (i === 0) {
-      letterIndex = 'A';
+      letterIndex = 'A) ';
     } else if (i === 1) {
-      letterIndex = 'B';
+      letterIndex = 'B) ';
     } else if (i === 2) {
-      letterIndex = 'C';
+      letterIndex = 'C) ' ;
     } else {
-      letterIndex = 'D';
+      letterIndex = 'D) ';
     }
     // creating button elements for each letter/answer, assigning the value of an answer and appending to the form element that holds the buttons/answers
     var button = document.createElement('button');
+    button.setAttribute('name', answerArray[i]);
     button.innerHTML = '<span>' + letterIndex + '</span>' + answerArray[i];
     formEl.appendChild(button);
   }
 }
+
+// Event Listener on form
+formEl.addEventListener('submit', answerButtonHandler);
+
+//
+function answerButtonHandler(e) {
+  e.preventDefault();
+  console.log(e);
+  var target = e.target.answerArray[i].value;
+  console.log(target);
+}
+
 
 // calling the main game function on page load
 gameQuestions();
