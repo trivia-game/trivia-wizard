@@ -38,13 +38,23 @@ section {
 form{
   padding: 0%;
   height: 150px;
-  background-color: aqua;
+  background-color: rgb(3, 129, 10);
+  text-align: center;
+  font-size: 25px;
+}
+form input[type=text] {
+  color: blueviolet;
+  font-size: 20px;
+}
+form input[type=password]{
+  font-size: 20px;
 }
 .box{
   display: block;
-  padding: 10%;
+  padding: 7%;
   background-color: brown;
   height: 20%;
+  padding-bottom: 20%;
 }
 form label{
   display: block;
@@ -57,3 +67,15 @@ form input{
   text-align: center;
   margin-left: 34%;
 }
+
+form button{
+  display: block;
+  margin: 5%;
+  width: 34%;
+  height: 50px;
+  margin-left: 34%;
+  font-size: 20px;
+  background-color: blueviolet;
+}
+
+/* Game page starts here!! */
