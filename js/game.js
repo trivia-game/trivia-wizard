@@ -70,6 +70,8 @@ function shuffle(array) {
 
 // Main game question function
 function gameQuestions() {
+  questionCounter += 1;
+  console.log(questionCounter);
   // pulling a random number from our array of questions
   rand = randomNumGenerator(0, Question.allQuestions.length - 1);
   var q1 = Question.allQuestions[rand];
@@ -113,27 +115,26 @@ divAnswerEl.addEventListener('click', answerButtonHandler);
 function answerButtonHandler(e) {
   console.log(e);
   var target = e.target.name;
-  console.log('updating score: ' + User.currentUser['score']);
-  console.log(typeof(User.currentUser['score']));
-  // question counter
-  questionCounter += 1;
-  console.log(questionCounter); 
-  if(questionCounter === 3){
-    alert('you have reached max questions.');
-  }
-  if (Question.allQuestions[rand].answer === target) {
+
+  if (Question.allQuestions[rand].answer === target && questionCounter < 3) {
     User.currentUser['score'] += 1;
+
+    //save currentUser to localStorage
+    saveCurrentUser();
+
+    divQuestionEl.innerHTML = '';
+    divAnswerElAB.innerHTML = '';
+    divAnswerElCD.innerHTML = '';
+    Question.allQuestions.splice(rand, 1);
+    gameQuestions();
+  }else if(questionCounter === 3){
+    alert('you have reached max questions.');
+    endingGame();
   }else{
     console.log('incorrect');
+    //ending game
+    endingGame();
   }
-  //save currentUser to localStorage
-  saveCurrentUser();
-  divQuestionEl.innerHTML = '';
-  divAnswerElAB.innerHTML = '';
-  divAnswerElCD.innerHTML = '';
-  // divAnswerEl.innerHTML = '';
-  Question.allQuestions.splice(rand, 1);
-  gameQuestions();
 }
 
 
@@ -146,6 +147,42 @@ function checkSavedCurrentUser(){
 
 function saveCurrentUser(){
   localStorage.setItem('currentUser', JSON.stringify(User.currentUser));
+}
+
+function endingGame(){
+  //retrieve currentUser info
+  checkSavedCurrentUser();
+  //display play again button
+
+  // clear out div
+  divQuestionEl.innerHTML = '';
+  divAnswerEl.innerHTML = '';
+
+  //display current user's name & score
+  var nameScore = document.createElement('h2');
+  nameScore.textContent = User.currentUser['name'] + ', your score is: ' + User.currentUser['score'];
+
+  divQuestionEl.appendChild(nameScore);
+
+  //display play again button
+  var playAgainBtn = document.createElement('button');
+
+  playAgainBtn.innerHTML = 'Play Again!';
+  divQuestionEl.appendChild(playAgainBtn);
+  playAgainBtn.addEventListener('click', pageReload);
+
+  //reset current user's score & save into localStorage
+  resetCurrentUserScore();
+  saveCurrentUser();
+
+
+}
+function pageReload(){
+  location.reload();
+}
+
+function resetCurrentUserScore(){
+  User.currentUser['score'] = 0;
 }
 
 
