@@ -79,6 +79,7 @@ function displayButton() {
   var playButtonEl = document.createElement('button');
   playButtonEl.textContent = 'Play Game!';
   playGameSectionEl.appendChild(playButtonEl);
+  playButtonEl.addEventListener ('click', function(){ window.location = 'game.html';});
 }
 
 // greeting function for a new user
