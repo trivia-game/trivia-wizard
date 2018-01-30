@@ -1,4 +1,5 @@
-/* font-family: 'Fugaz One', cursive;
+/* Fonts from Google Fonts--
+font-family: 'Fugaz One', cursive;
 font-family: 'Zilla Slab Highlight', cursive;
 font-family: 'Patrick Hand', cursive; */
 
@@ -92,5 +93,9 @@ footer{
   background-color: rgb(65, 4, 100);
   color: blanchedalmond;
   padding: 10px;
+}
+/* Play Game Button */
+section#play-button button{
+  width: 40%;
 }
 /* Game page starts here!! */
