@@ -69,6 +69,7 @@ function shuffle(array) {
 
 // Main game question function
 function gameQuestions() {
+  divAnswerEl.addEventListener('click', answerButtonHandler);
   questionCounter += 1;
   countDownTimer();
   console.log(questionCounter);
@@ -109,10 +110,11 @@ function gameQuestions() {
 }
 
 // Event Listener on form
-divAnswerEl.addEventListener('click', answerButtonHandler);
+
 
 //
 function answerButtonHandler(e) {
+  divAnswerEl.removeEventListener('click', answerButtonHandler);
   console.log(e);
   var target = e.target.name;
   if (!e.target.name) {
