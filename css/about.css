@@ -1,0 +1,70 @@
+body{
+  background-color: black;
+  color: bisque;
+}
+
+header{
+  width: 100%;
+  text-align: center;
+  font-size: 23px;
+  font-family: 'Fugaz One', cursive;
+  background-color:  #0c023d;
+  color: blanchedalmond;
+  margin-bottom: 25px;
+}
+
+header img{
+  width: 200px;
+  display: flex;
+  margin-left: 500px;
+  border: #0c023d, solid;
+}
+
+#header-title {
+  text-align: center;
+}
+  
+nav{
+  float: right;
+  padding: 20px;
+  position: absolute;
+  top: 40px;
+  right: 20px;
+}
+
+nav a {
+  color: rgb(207, 88, 20);
+  display: block;
+}
+
+section img {
+  width: auto;
+  height: 200px;
+}
+
+#about {
+  width: 100%;
+  border: 2px solid black;
+}
+
+.left {
+  width: 48%;
+  float: left;
+  margin: 5px;
+  text-align: center;
+  border: 2px solid black;
+}
+
+.right {
+  float: right;
+  width: 48%;
+  margin: 5px;
+  text-align: center;
+  border: 2px solid black;
+}
+
+.middle {
+  width: 48%;
+  margin: 0 auto;
+  text-align: center;
+}
