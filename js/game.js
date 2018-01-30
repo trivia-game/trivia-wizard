@@ -118,7 +118,7 @@ function answerButtonHandler(e) {
   console.log(e);
   var target = e.target.name;
 
-  if (Question.allQuestions[rand].answer === target && questionCounter < 3) {
+  if (Question.allQuestions[rand].answer === target) {
     User.currentUser['score'] += 1;
 
     //save currentUser to localStorage
@@ -149,6 +149,7 @@ function nextQuestionHandler(){
   divAnswerElCD.innerHTML = '';
   gameQuestions();
 }
+
 
 function checkSavedCurrentUser(){
   var retrieve = JSON.parse(localStorage.getItem('currentUser'));
