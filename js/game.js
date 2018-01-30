@@ -123,6 +123,7 @@ function answerButtonHandler(e) {
   saveCurrentUser();
   divQuestionEl.innerHTML = '';
   divAnswerEl.innerHTML = '';
+  Question.allQuestions.splice(rand, 1);
   gameQuestions();
 }
 
