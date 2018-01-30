@@ -2,6 +2,7 @@
 
 // Array that all questions are being pushed to from the constructor
 Question.allQuestions = [];
+var questionCounter = 0;
 
 // variables accessing elements in the HTML
 var sectionEl = document.getElementById('questions');
@@ -107,18 +108,24 @@ function answerButtonHandler(e) {
   var target = e.target.name;
   console.log('updating score: ' + User.currentUser['score']);
   console.log(typeof(User.currentUser['score']));
+  // question counter
+  questionCounter += 1;
+  console.log(questionCounter); 
+  if(questionCounter === 3){
+    alert('you have reached max questions.');
+  }
   if (Question.allQuestions[rand].answer === target) {
     User.currentUser['score'] += 1;
   }else{
     console.log('incorrect');
   }
-
-  
-
   //save currentUser to localStorage
   saveCurrentUser();
-
+  divQuestionEl.innerHTML = '';
+  divAnswerEl.innerHTML = '';
+  gameQuestions();
 }
+
 
 function checkSavedCurrentUser(){
   var retrieve = JSON.parse(localStorage.getItem('currentUser'));
