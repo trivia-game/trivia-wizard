@@ -1,0 +1,79 @@
+body{
+  background-color: black;
+  color: bisque;
+}
+
+header{
+  width: 100%;
+  text-align: center;
+  font-size: 23px;
+  font-family: 'Fugaz One', cursive;
+  background-color:  #0c023d;
+  color: blanchedalmond;
+  margin-bottom: 25px;
+}
+
+header img{
+  width: 200px;
+  display: flex;
+  margin-left: 500px;
+  border: #0c023d, solid;
+}
+
+h1 {
+  display: inline;
+  position: absolute;
+  top: 40px;
+  left: 700px;
+}
+  
+nav{
+  float: right;
+  padding: 20px;
+  position: absolute;
+  top: 40px;
+  right: 20px;
+}
+
+nav a {
+  color: rgb(207, 88, 20);
+}
+
+section {
+  text-align: center;
+  padding-top: 20px;
+}
+
+#question {
+  margin: 0 auto;
+  width: 700px;
+  background-color: #1766F1;
+  font-size: 150%;
+  border: 10px ridge white;
+  border-radius: 25px;
+}
+
+#answers {
+  margin-top: 50px;
+}
+
+span {
+  font-size: 32px;
+  vertical-align: middle;
+}
+
+#answersAB button, #answersCD button {
+  width: 300px;
+  height: 80px;
+  margin: 20px 20px 20px 10px;
+  font-size: 20px;
+  background-color: blueviolet;
+  color: blanchedalmond;
+  border-radius: 15px;
+  vertical-align: middle;
+}
+
+#answersAB button:hover, #answersCD button:hover {
+  background-color: #1766F1;
+  border: 3px solid white;
+}
