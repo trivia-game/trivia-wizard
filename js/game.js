@@ -3,6 +3,7 @@
 // Array that all questions are being pushed to from the constructor
 Question.allQuestions = [];
 var questionCounter = 0;
+var downloadTimer = null;
 
 // variables accessing elements in the HTML
 var sectionEl = document.getElementById('questions');
@@ -126,13 +127,17 @@ function answerButtonHandler(e) {
     divAnswerElAB.innerHTML = '';
     divAnswerElCD.innerHTML = '';
     Question.allQuestions.splice(rand, 1);
+    clearCountDown();
     gameQuestions();
+    countDownTimer();
     if(questionCounter === 4){
       alert('you have reached the max number of question');
+      clearCountDown();
       endingGame();
     }
   }else{
     console.log('incorrect');
+    clearCountDown();
     //ending game
     endingGame();
   }
@@ -187,7 +192,25 @@ function resetCurrentUserScore(){
   User.currentUser['score'] = 0;
 }
 
+function countDownTimer(){
+  var timeleft = 10;
+  downloadTimer = setInterval(function(){
+    document.getElementById('timer').innerHTML = --timeleft;
+    if(timeleft <= 0){
+      clearInterval(downloadTimer);
+      document.getElementById('timer').innerHTML = '';
+      endingGame();
+    }
+  },1000);
+}
+
+function clearCountDown(){
+  clearInterval(downloadTimer);
+  document.getElementById('timer').innerHTML = '';
+}
+
 
 
 // calling the main game function on page load
 gameQuestions();
+countDownTimer();
