@@ -8,6 +8,17 @@ var sectionEl = document.getElementById('questions');
 var divQuestionEl = document.getElementById('question');
 var divAnswerEl = document.getElementById('answers');
 var rand = 0;
+User.currentUser = {name: '', score: 0};
+function User(username, password) {
+  this.username = username;
+  this.password = password;
+  User.allUsers.push(this);
+}
+if(localStorage.currentUser){
+  checkSavedCurrentUser();
+}
+
+
 
 
 // Constructor function
@@ -94,10 +105,32 @@ divAnswerEl.addEventListener('click', answerButtonHandler);
 function answerButtonHandler(e) {
   console.log(e);
   var target = e.target.name;
+  console.log('updating score: ' + User.currentUser['score']);
+  console.log(typeof(User.currentUser['score']));
   if (Question.allQuestions[rand].answer === target) {
-    console.log("true");
+    User.currentUser['score'] += 1;
+  }else{
+    console.log('incorrect');
   }
+
+  
+
+  //save currentUser to localStorage
+  saveCurrentUser();
+
 }
+
+function checkSavedCurrentUser(){
+  var retrieve = JSON.parse(localStorage.getItem('currentUser'));
+  User.currentUser['name'] = retrieve.name;
+  User.currentUser['score'] = retrieve.score;
+
+}
+
+function saveCurrentUser(){
+  localStorage.setItem('currentUser', JSON.stringify(User.currentUser));
+}
+
 
 
 // calling the main game function on page load

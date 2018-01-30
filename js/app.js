@@ -9,7 +9,7 @@ User.allUsers = [];
 checkLocalStorage();
 
 // creating a variable for current user name
-User.currentUserName = '';
+User.currentUser = {name: '', score: 0};
 
 // User constructor function. A new instance of User object will be pushed to User.allUsers
 function User(username, password) {
@@ -28,7 +28,7 @@ function loginHandler(e) {
   e.preventDefault();
   var name = e.target.userName.value;
   var password = e.target.password.value;
-  User.currentUserName = name;
+  User.currentUser['name'] = name;
 
   // check if entered name can be found in the previously saved user objects
   // if name is found User.allUsers, welcome back greeting message will be printed using user's name
@@ -85,7 +85,7 @@ function displayButton() {
 function greeting() {
   formEl.innerHTML = '';
   var h3El = document.createElement('h3');
-  h3El.textContent = 'Hello ' + User.currentUserName;
+  h3El.textContent = 'Hello ' + User.currentUser['name'];
   formEl.appendChild(h3El);
 }
 
@@ -93,11 +93,11 @@ function greeting() {
 function welcomeBackGreeting() {
   formEl.innerHTML = '';
   var h3El = document.createElement('h3');
-  h3El.textContent = 'Welcome Back! ' + User.currentUserName;
+  h3El.textContent = 'Welcome Back! ' + User.currentUser['name'];
   formEl.appendChild(h3El);
 }
 
 // function to save current user to localStorage
 function saveCurrentUser() {
-  localStorage.setItem('currentUser', JSON.stringify(User.currentUserName));
+  localStorage.setItem('currentUser', JSON.stringify(User.currentUser));
 }
