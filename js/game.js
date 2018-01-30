@@ -4,6 +4,7 @@ Question.allQuestions = [];
 
 var sectionEl = document.getElementById('questions');
 var formEl = document.getElementById('answers');
+var divEl = document.getElementById('test');
 
 function Question(question, answer, setOfAnswers) {
   this.question = question;
@@ -47,9 +48,12 @@ function shuffle(array) {
 function gameQuestions() {
   var rand = randomNumGenerator(0, Question.allQuestions.length);
   var q1 = Question.allQuestions[rand];
+  // console.log(q1);
+  console.log(q1.question);
   var pEl = document.createElement('p');
+  console.log(pEl);
   pEl.textContent = q1.question;
-  sectionEl.appendChild(pEl);
+  divEl.appendChild(pEl);
   var answerArray = shuffle(q1.setOfAnswers);
   for (var i in answerArray) {
     var letterIndex;
