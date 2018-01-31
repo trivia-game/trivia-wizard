@@ -252,7 +252,7 @@ function answerButtonHandler(e) {
     clearCountDown();
     ticktock.pause();
     gameover.play();
-    resetCurrentUserScore();
+    // resetCurrentUserScore();
     resetCurrentUserTopScore();
     saveCurrentUser();
     updateCUToAllUser();
@@ -277,7 +277,7 @@ function nextQuestionHandler(){
 function checkSavedCurrentUser(){
   var retrieve = JSON.parse(localStorage.getItem('currentUser'));
   User.currentUser['name'] = retrieve.name;
-  User.currentUser['score'] = retrieve.score;
+  // User.currentUser['score'] = retrieve.score;
   User.currentUser['topScore'] = retrieve.topScore;
 
 }
@@ -318,6 +318,7 @@ function endingGame(){
 }
 function pageReload(){
   location.reload();
+  // resetCurrentUserScore();
 }
 
 function resetCurrentUserScore(){

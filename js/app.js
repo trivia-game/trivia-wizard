@@ -153,8 +153,14 @@ function returnUser(){
     welcomeBackGreeting();
     checkLocalStorage();
     displayButton();
+    resetCurrentUserScore();
+    saveCurrentUser();
     dispalyLogoutBtn();
     formEl.addEventListener('submit', loginHandler);
   }
 
+}
+
+function resetCurrentUserScore(){
+  User.currentUser['score'] = 0;
 }
