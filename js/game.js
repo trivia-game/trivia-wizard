@@ -22,6 +22,7 @@ var timerEl = document.getElementById('timer');
 var divLevelIndicatorEl = document.getElementById('levelIndicator');
 var endGameMsgEl = document.getElementById('endGameMsg');
 var level = document.getElementById('level');
+var divLogOutEl = document.getElementById('logout');
 var rand = 0;
 
 function User(username, password) {
@@ -37,12 +38,14 @@ function User(username, password) {
 User.currentUser = {name: '', score: 0, topScore: 0};
 if(performance.navigation.type === 1 && localStorage.currentUser){
   checkSavedCurrentUser();
+  returnUser();
   User.currentUser['score'] = 0;
   saveCurrentUser();
   //set questionCounter to 0 as well
   questionCounter = 0;
 }else if(performance.navigation.type === 0 && localStorage.currentUser){
   checkSavedCurrentUser();
+  returnUser();
 }
 
 
@@ -360,6 +363,50 @@ function updateCUToAllUser(){
     }
   }
 
+}
+
+function dispalyLogoutBtn(){
+  var logOutBtn = document.createElement('button');
+  logOutBtn.innerHTML = 'Logout';
+  divLogOutEl.appendChild(logOutBtn);
+  logOutBtn.addEventListener('click', logOutHandler);
+}
+
+function logOutHandler(e){
+  e.preventDefault();
+  //remove logout button
+  divLogOutEl.innerHTML = '';
+  //remove currentUser from localStorage
+  localStorage.removeItem('currentUser');
+  resetCurrentUserTopScore();
+  updatingCurrentUserAllUserObject();
+
+  //back to index.page
+  window.location.href = 'index.html';
+
+
+}
+
+function returnUser(){
+  //if currentUser exists in localStorage
+  if(User.currentUser['name'].length > 0){
+    //don't display login form
+    //instead display welcome back message
+    dispalyLogoutBtn();
+
+  }else{
+    //display login form
+    //Add event listener to login-form
+  }
+
+}
+
+function updatingCurrentUserAllUserObject(){
+  for(var i in User.allUsers){
+    if(User.allUsers[i].name === User.currentUser['name']){
+      User.allUsers[i].topScore = User.currentUser['topScore'];
+    }
+  }
 }
 
 // calling the main game function on page load
