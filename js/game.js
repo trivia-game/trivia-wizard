@@ -7,11 +7,10 @@ var questionCounter = 0;
 var downloadTimer = null;
 
 // sound files
-var sparkle = new Audio('sound/sparkle.mp3');
+var correct = new Audio('sound/correct.mp3');
 var gameover = new Audio('sound/gameover.mp3');
 var ticktock = new Audio('sound/ticktock.mp3');
 var outoftime = new Audio('sound/outoftime.mp3');
-var laugh = new Audio('sound/laugh.mp3');
 
 // variables accessing elements in the HTML
 var sectionEl = document.getElementById('questions');
@@ -28,13 +27,14 @@ var rand = 0;
 function User(username, password) {
   this.username = username;
   this.password = password;
+  this.topScore = 0;
   User.allUsers.push(this);
 }
 
 // if page is refreshed set current user's score to 0 and save it to localStorage
 // if currentUser's data exists in localStorage, retrieve it
 
-User.currentUser = {name: '', score: 0};
+User.currentUser = {name: '', score: 0, topScore: 0};
 if(performance.navigation.type === 1 && localStorage.currentUser){
   checkSavedCurrentUser();
   User.currentUser['score'] = 0;
@@ -157,10 +157,10 @@ function gameQuestions() {
   }
 
   //remove previous level indicator
-  if(divLevelIndicatorEl.childElementCount !== 0){
+  if (divLevelIndicatorEl.childElementCount !== 0){
     removeLevelIndicator();
     levelIndicator();
-  }else{
+  } else {
     //display current level
     levelIndicator();
   }
@@ -182,9 +182,10 @@ function answerButtonHandler(e) {
 
     User.currentUser['score'] += 1;
     ticktock.pause();
-    sparkle.play();
+    correct.play();
     
 
+    resetCurrentUserTopScore();
     //save currentUser to localStorage
     saveCurrentUser();
 
@@ -196,7 +197,7 @@ function answerButtonHandler(e) {
     //   clearCountDown();
     //   endingGame();
     // }else{
-    clearCountDown();
+    // clearCountDown();
     // creates button for next question
     var nextQuestionBtn = document.createElement('button');
     nextQuestionBtn.innerHTML = 'Next Question';
@@ -217,6 +218,9 @@ function answerButtonHandler(e) {
     clearCountDown();
     ticktock.pause();
     gameover.play();
+    resetCurrentUserTopScore();
+    saveCurrentUser();
+    updateCUToAllUser();
     //ending game
     timerEl.innerHTML = '';
     divLevelIndicatorEl.innerHTML = '<h1>Incorrect - Game Over<h1>';
@@ -239,6 +243,7 @@ function checkSavedCurrentUser(){
   var retrieve = JSON.parse(localStorage.getItem('currentUser'));
   User.currentUser['name'] = retrieve.name;
   User.currentUser['score'] = retrieve.score;
+  User.currentUser['topScore'] = retrieve.topScore;
 
 }
 
@@ -286,7 +291,7 @@ function countDownTimer(){
   downloadTimer = setInterval(function(){
     document.getElementById('timer').innerHTML = --timeleft;
     ticktock.play();
-    if(timeleft <= 0){
+    if (timeleft <= 0){
       ticktock.pause();
       outoftime.play();
       clearInterval(downloadTimer);
@@ -303,23 +308,40 @@ function clearCountDown(){
 
 
 function levelIndicator(){
-  if(questionCounter < 4){
+  if (questionCounter < 4){
     //display level 1
-    level.textContent = 'Level 1';
+    level.textContent = 'Question ' + questionCounter + ' - Level EASY';
     divLevelIndicatorEl.appendChild(level);
-  }else if(questionCounter > 3 && questionCounter < 8){
+  } else if (questionCounter > 3 && questionCounter < 7){
     //display level 2
-    level.textContent = 'Level 2';
+    level.textContent = 'Question ' + questionCounter + ' - Level MEDIUM';
     divLevelIndicatorEl.appendChild(level);
-  }else{
+  } else {
     //display level 3
-    level.textContent = 'Level 3';
+    level.textContent = 'Question ' + questionCounter + ' - Level HARD';
     divLevelIndicatorEl.appendChild(level);
   }
 }
 
 function removeLevelIndicator(){
   level.remove;
+}
+
+function resetCurrentUserTopScore(){
+  if(User.currentUser['score'] > User.currentUser['topScore']){
+    User.currentUser['topScore'] = User.currentUser['score'];
+  }
+}
+
+function updateCUToAllUser(){
+  User.allUsers = JSON.parse(localStorage.getItem('allUsers'));
+  for(var x = 0; x < User.allUsers.length; x++) {
+    if(User.allUsers[x].username === User.currentUser['name']) {
+      User.allUsers[x].topScore = User.currentUser['topScore'];
+      localStorage.setItem('allUsers', JSON.stringify(User.allUsers));
+    }
+  }
+
 }
 
 // calling the main game function on page load

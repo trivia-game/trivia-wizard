@@ -9,12 +9,13 @@ User.allUsers = [];
 checkLocalStorage();
 
 // creating a variable for current user name
-User.currentUser = {name: '', score: 0};
+User.currentUser = {name: '', score: 0, topScore: 0};
 
 // User constructor function. A new instance of User object will be pushed to User.allUsers
 function User(username, password) {
   this.username = username;
   this.password = password;
+  this.topScore = 0;
   User.allUsers.push(this);
 }
 
@@ -35,6 +36,7 @@ function loginHandler(e) {
   // then current user name will be saved into localStorage
   for(var x = 0; x < User.allUsers.length; x++) {
     if(User.allUsers[x].username === name) {
+      User.currentUser['topScore'] = User.allUsers[x].topScore;
       saveCurrentUser();
       welcomeBackGreeting();
       break;
@@ -94,8 +96,11 @@ function greeting() {
 function welcomeBackGreeting() {
   formEl.innerHTML = '';
   var h3El = document.createElement('h3');
+  var h4El = document.createElement('h4');
   h3El.textContent = 'Welcome Back! ' + User.currentUser['name'];
+  h4El.textContent = 'Your highest score: ' + User.currentUser['topScore'];
   formEl.appendChild(h3El);
+  formEl.appendChild(h4El);
 }
 
 // function to save current user to localStorage

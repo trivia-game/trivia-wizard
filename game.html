@@ -11,14 +11,16 @@
 <header>
   <div id="header-title">
     <img src="img/wizard-clipart.gif">
-    <h1>Trivia Wizard</h1>        
+    <h1>Trivia Wizard</h1>
+    <img class="flipped" src="img/wizard-clipart.gif">
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About Us</a>
     </nav>
   </div>
 </header>
-<body>
+<body>  
+  <div id="levelIndicator"><h2 id = 'level'></h2></div>  
   <section id="questions">
     <div id="question"></div>
     <div id="answers">
@@ -27,7 +29,7 @@
     </div>
     <div id="next-question"></div>
     <div id="timer"></div>
-    <div id="levelIndicator"><h2 id = 'level'></h2></div>
+
   </section>
   <script src="js/game.js"></script>
 </body>
