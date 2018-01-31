@@ -387,6 +387,7 @@ function dispalyLogoutBtn(){
   logOutBtn.innerHTML = 'Logout';
   divLogOutEl.appendChild(logOutBtn);
   logOutBtn.addEventListener('click', logOutHandler);
+  logOutBtn.className = 'log-out';
 }
 
 function logOutHandler(e){
