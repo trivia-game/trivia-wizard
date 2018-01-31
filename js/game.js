@@ -13,7 +13,6 @@ var ticktock = new Audio('sound/ticktock.mp3');
 var outoftime = new Audio('sound/outoftime.mp3');
 
 // variables accessing elements in the HTML
-var sectionEl = document.getElementById('questions');
 var divQuestionEl = document.getElementById('question');
 var divAnswerEl = document.getElementById('answers');
 var divAnswerElAB = document.getElementById('answersAB');
@@ -21,6 +20,7 @@ var divAnswerElCD = document.getElementById('answersCD');
 var nextQuestionDiv = document.getElementById('next-question');
 var timerEl = document.getElementById('timer');
 var divLevelIndicatorEl = document.getElementById('levelIndicator');
+var endGameMsgEl = document.getElementById('endGameMsg');
 var level = document.getElementById('level');
 var rand = 0;
 
@@ -172,6 +172,8 @@ function answerButtonHandler(e) {
   var target = e.target.name;
   var correctAnswer = Question.allQuestions[rand].answer;
   var answerChoice = e.srcElement;
+  var answerArray = Question.allQuestions[rand].setOfAnswers;
+  var answerButtonEls = document.getElementsByTagName('button');
   if (!e.target.name) {
     return;
   }
@@ -179,11 +181,17 @@ function answerButtonHandler(e) {
   timerEl.setAttribute('class', 'hidden-element');
   if (correctAnswer === target) {
     answerChoice.setAttribute('id', 'correct');
+    for (var i = 0; i < answerArray.length; i++) {
+      answerButtonEls[i].setAttribute('class', 'no-hover');
+      if (correctAnswer === answerArray[i]) {
+        answerButtonEls[i].setAttribute('id', 'correct');
+      }
+    }
 
     User.currentUser['score'] += 1;
     ticktock.pause();
     correct.play();
-    
+
 
     resetCurrentUserTopScore();
     //save currentUser to localStorage
@@ -205,13 +213,11 @@ function answerButtonHandler(e) {
     nextQuestionBtn.addEventListener('click', nextQuestionHandler);
 
   }else{
-    var answerArray = Question.allQuestions[rand].setOfAnswers;
-    var answerButtonEls = document.getElementsByTagName('button');
     answerChoice.setAttribute('id', 'incorrect');
-    for (var i = 0; i < answerArray.length; i++) {
-      answerButtonEls[i].setAttribute('class', 'no-hover');
-      if (correctAnswer === answerArray[i]) {
-        answerButtonEls[i].setAttribute('id', 'correct');
+    for (var j = 0; j < answerArray.length; j++) {
+      answerButtonEls[j].setAttribute('class', 'no-hover');
+      if (correctAnswer === answerArray[j]) {
+        answerButtonEls[j].setAttribute('id', 'correct');
       }
     }
     console.log('incorrect');
@@ -223,7 +229,7 @@ function answerButtonHandler(e) {
     updateCUToAllUser();
     //ending game
     timerEl.innerHTML = '';
-    divLevelIndicatorEl.innerHTML = '<h1>Incorrect - Game Over<h1>';
+    endGameMsgEl.innerHTML = '<h2>Incorrect - Game Over</h2>';
     window.setInterval(function() {
       endingGame();
     }, 3000);
@@ -257,6 +263,7 @@ function endingGame(){
   checkSavedCurrentUser();
 
   // clear out div
+  endGameMsgEl.innerHTML = '';
   divLevelIndicatorEl.innerHTML = '';
   divQuestionEl.innerHTML = '';
   divAnswerEl.innerHTML = '';
