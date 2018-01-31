@@ -5,6 +5,13 @@ Question.allQuestions = [];
 var questionCounter = 0;
 var downloadTimer = null;
 
+// sound files
+var sparkle = new Audio('sound/sparkle.mp3');
+var gameover = new Audio('sound/gameover.mp3');
+var ticktock = new Audio('sound/ticktock.mp3');
+var outoftime = new Audio('sound/outoftime.mp3');
+var laugh = new Audio('sound/laugh.mp3');
+
 // variables accessing elements in the HTML
 var sectionEl = document.getElementById('questions');
 var divQuestionEl = document.getElementById('question');
@@ -147,6 +154,9 @@ function answerButtonHandler(e) {
   timerEl.setAttribute('class', 'hidden-element');
   if (Question.allQuestions[rand].answer === target) {
     User.currentUser['score'] += 1;
+    ticktock.pause();
+    sparkle.play();
+    
 
     //save currentUser to localStorage
     saveCurrentUser();
@@ -169,6 +179,8 @@ function answerButtonHandler(e) {
   }else{
     console.log('incorrect');
     clearCountDown();
+    ticktock.pause();
+    gameover.play();
     //ending game
     endingGame();
   }
@@ -197,7 +209,6 @@ function saveCurrentUser(){
 function endingGame(){
   //retrieve currentUser info
   checkSavedCurrentUser();
-  //display play again button
 
   // clear out div
   divQuestionEl.innerHTML = '';
@@ -232,7 +243,10 @@ function countDownTimer(){
   var timeleft = 10;
   downloadTimer = setInterval(function(){
     document.getElementById('timer').innerHTML = --timeleft;
+    ticktock.play();
     if(timeleft <= 0){
+      ticktock.pause();
+      outoftime.play();
       clearInterval(downloadTimer);
       document.getElementById('timer').innerHTML = '';
       endingGame();
