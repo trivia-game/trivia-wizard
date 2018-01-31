@@ -56,7 +56,7 @@ nav a {
   color: rgb(207, 88, 20);
   display: block;
 }
-
+/* end of header start of body */
 section {
   font-family: 'Lilita One', cursive;
   width: 70%;
@@ -80,6 +80,7 @@ section#play-button, h2, p {
   margin: 0 auto;
   padding-top: 5px; 
   border-radius: 10px;
+  font-family: 'Sniglet', cursive;
 }
 form input[type=text] {
   color: blueviolet;
