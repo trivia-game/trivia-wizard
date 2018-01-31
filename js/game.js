@@ -100,9 +100,9 @@ function gameQuestions() {
   divAnswerEl.addEventListener('click', answerButtonHandler);
 
   timerEl.removeAttribute('class', 'hidden-element');
-  
+
   questionCounter += 1;
-  countDownTimer();
+  // countDownTimer();
   console.log(questionCounter);
   // pulling a random number from our array of questions
   rand = randomNumGenerator(0, Question.allQuestions.length - 1);
@@ -147,12 +147,15 @@ function gameQuestions() {
 function answerButtonHandler(e) {
   console.log(e);
   var target = e.target.name;
+  var answerChoice = e.srcElement;
   if (!e.target.name) {
     return;
   }
   divAnswerEl.removeEventListener('click', answerButtonHandler);
   timerEl.setAttribute('class', 'hidden-element');
   if (Question.allQuestions[rand].answer === target) {
+    answerChoice.setAttribute('class', 'correct');
+
     User.currentUser['score'] += 1;
     ticktock.pause();
     sparkle.play();
@@ -177,6 +180,7 @@ function answerButtonHandler(e) {
       nextQuestionBtn.addEventListener('click', nextQuestionHandler);
     }
   }else{
+    answerChoice.setAttribute('class', 'incorrect');
     console.log('incorrect');
     clearCountDown();
     ticktock.pause();

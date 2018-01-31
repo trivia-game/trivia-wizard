@@ -110,6 +110,14 @@ span {
   background-color: rgb(103, 168, 5);
 }
 
+#answers .incorrect {
+  background-color: red;
+}
+
+#answers .correct {
+  background-color: green;
+}
+
 /* #play-again-button {
   width: 200px;
   height: 50px;
