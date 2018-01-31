@@ -50,49 +50,50 @@ if(performance.navigation.type === 1 && localStorage.currentUser){
 
 
 // Constructor function
-function Question(question, answer, setOfAnswers) {
+function Question(question, answer, setOfAnswers, difficulty) {
   this.question = question;
   this.answer = answer;
   this.setOfAnswers = setOfAnswers;
+  this.difficulty = difficulty;
   Question.allQuestions.push(this);
 }
 
 // New Instances of the constructor
-new Question('What movie won best picture at the 2017 Academy Awards?', 'Moonlight', ['Moonlight', 'La La Land', 'Manchester by the Sea', 'Fences']);
-new Question('In the movie The Terminator, what is the name of the company that created Skynet?', 'Cyberdyne Systems', ['Cyberdyne Systems', 'Code Fellows', 'Multi-National United', 'Tetravaal']);
-new Question('Emma Watson is known for playing which character in Harry Potter?', 'Hermione Granger', ['Hermione Granger', 'Luna Lovegood', 'Bellatrix Lestrange', 'Nymphadora Lupin']);
-new Question('Bruce Banner turns into what fictional superhero when he becomes angry?', 'The Hulk', ['The Hulk', 'Batman', 'Ironman', 'Antman']);
-new Question('Which actor played Marty McFly in the 1980\'s sci-fi classic Back to the Future?', 'Michael J. Fox', ['Michael J. Fox', 'John Cusak', 'Tom Cruise', 'Michael Keaton']);
-new Question('Tyler Durden is a fictional character appearing as the central protagonist and antagonist in what 1999 american film?', 'Fight Club', ['Fight Club', 'The Matrix', 'The Green Mile', 'The Sixth Sense']);
-new Question('What is the stage name of the member of Public Enemy who would later have a reality dating show?', 'Flavor Flav', ['Flavor Flav', 'Chuck D', 'Ice Cube' , 'Ol\' Dirty Bastard']);
-new Question('Who interrupted Taylor Swift\'s acceptance speech at the 2009 Video Music Awards?', 'Kanye West', ['Kanye West', 'Blake Shelton', '2 Chains', 'Lil Wayne']);
-new Question('Who is the former drummer for Nirvana that went on to become the frontman for the Foo Fighters?', 'Dave Grohl', ['Dave Grohl', 'Kurt Cobain', 'Chris Stapleton', 'Johnny Cash']);
-new Question('Victoria Beckham was a member of which all girl English pop group formed in 1994?', 'The Spice Girls', ['The Spice Girls', 'Fifth Harmony', 'TLC', 'Destiny\'s Child']);
-new Question('Released in 1992, what is the best selling soundtrack album of all time?', 'The Bodyguard', ['The Bodyguard', 'Aladdin', 'Gladiator', 'Batman Returns']);
-new Question('"I\'d buy that for a dollar", is a catchphrase from what 1987 action movie set in Detroit, Michigan, in the near future?', 'Robocop', ['The Lost Boys', 'Lethal Weapon', 'Predator', 'Robocop']);
-new Question('As a protest to Hollywood\'s portrayal of Native Americans in film, Marlon Brando declined an Academy Award for his performance in what movie?', 'The Godfather', ['The Godfather', 'Dirty Dancing', 'Ishtar', 'Fatal Attraction']);
-new Question('In Disney\'s 1959 animated film Sleeping Beauty, who is Princess Aurora is betrothed to?', 'Prince Phillip', ['Belle', 'Prince Phillip', 'Prince Naveen', 'Prince Charming']);
-new Question('Who produced and directed the American epic aviation war film "Hell\'s Angels", released in 1930?', 'Howard Hughes', ['Howard Hughes', 'William Powell', 'Leslie Howard', 'Fredric Marc']);
-new Question('What was John Candy\'s character\'s name in the in 1987 comedy movie, "Planes, Trains, and Automobiles"?', 'Del Griffith', ['Del Griffith', 'Popeye', 'Frank Drebin', 'Barney Fife']);
-new Question('In what year did Nintendo release its first game console in North America?', '1985', ['1985', '1980', '2000', '1995']);
-new Question('American mobster Al Capone was sentenced to 11 years in federal prison for what crime', 'Tax Evasion', ['Tax Evasion', 'Murder', 'Trafficking', 'Kidnapping']);
-new Question('How many people have walked on the moon?', 'Twelve', ['Twelve', 'One', 'Five', 'Fourteen']);
-new Question('What is the name for the monetary unit used in Thailand?', 'Baht', ['Kyat', 'Baht', 'Riel', 'Rupee']);
-new Question('The vehicle manufacturer Volvo was founded in what country?', 'Sweden', ['Finland', 'Norway', 'Sweden', 'Germany']);
-new Question('In which country did cheddar cheese originate?', 'England', ['England', 'Netherlands', 'United States', 'Ireland']);
-new Question('What is the name of the world’s fastest snake whose bite is almost 100% fatal?', 'Black Mamba', ['Black Mamba', 'King Cobra', 'Pit Viper', 'Sidewinder']);
-new Question('The llama is native to which continent?', 'South America', ['North America', 'South America', 'Africa', 'Australia']);
-new Question('The Great Red Spot is a giant storm located on which planet?', 'Jupiter', ['Saturn', 'Jupiter', 'Mars', 'Neptune']);
-new Question('In humans, what is the only internal organ capable of regenerating lost tissue?', 'Liver', ['Liver', 'Spleen', 'Pancreas', 'kidney']);
-new Question('What was the highest selling album of the 1980s in the United States?', 'Thriller', ['Thriller', 'Back in Black', 'Pretenders', 'Blizzard of Ozz'] );
-new Question('What was the title of Kayne West\'s debut album release in 2004?','The College Dropout',['The College Dropout', 'The Life of Pablo', 'Yeezus', 'Graduation']);
-new Question('Who was the lead singer of the band Audioslave?','Chris Cornell',['Chris Cornell', 'Eddie Vedder', 'Sammy Hagar', 'Bruce Springsteen']);
-new Question('New Orleans is known as the birthplace of what type of music?','Jazz',['Jazz', 'Rock', 'Country', 'Hip Hop']);
-new Question('Which pop star sang the national anthem at the 50th Super Bowl?','Lady Gaga',['Lady Gaga', 'Justin Timberlake', 'Katy Perry', 'Taylor Swift']);
-new Question('Who was the lead singer of the rock band Queen?','Freddie Mercury',['Freddie Mercury', 'Mick Jagger', 'Steven Tyler', 'Bono']);
-new Question('Which music group has received the most Grammy Awards?','U2',['U2', 'Metallica', 'Rolling Stones', 'Aerosmith']);
-new Question('Which planet has the most moons?','Jupiter',['Jupiter', 'Uranus', 'Neptune', 'Saturn']);
-new Question('In computer science, what does "GUI" stand for?','Graphical user interface',['Graphical user interface', 'Global Unique Identifier', 'Gyroscopic Upper Stage', 'Gaming Under the Influence']);
+new Question('What movie won best picture at the 2017 Academy Awards?', 'Moonlight', ['Moonlight', 'La La Land', 'Manchester by the Sea', 'Fences'], 3);
+new Question('In the movie The Terminator, what is the name of the company that created Skynet?', 'Cyberdyne Systems', ['Cyberdyne Systems', 'Code Fellows', 'Multi-National United', 'Tetravaal'], 2);
+new Question('Emma Watson is known for playing which character in Harry Potter?', 'Hermione Granger', ['Hermione Granger', 'Luna Lovegood', 'Bellatrix Lestrange', 'Nymphadora Lupin'], 1);
+new Question('Bruce Banner turns into what fictional superhero when he becomes angry?', 'The Hulk', ['The Hulk', 'Batman', 'Ironman', 'Antman'], 2);
+new Question('Which actor played Marty McFly in the 1980\'s sci-fi classic Back to the Future?', 'Michael J. Fox', ['Michael J. Fox', 'John Cusak', 'Tom Cruise', 'Michael Keaton'], 1);
+new Question('Tyler Durden is a fictional character appearing as the central protagonist and antagonist in what 1999 american film?', 'Fight Club', ['Fight Club', 'The Matrix', 'The Green Mile', 'The Sixth Sense'], 1);
+new Question('What is the stage name of the member of Public Enemy who would later have a reality dating show?', 'Flavor Flav', ['Flavor Flav', 'Chuck D', 'Ice Cube' , 'Ol\' Dirty Bastard'], 2);
+new Question('Who interrupted Taylor Swift\'s acceptance speech at the 2009 Video Music Awards?', 'Kanye West', ['Kanye West', 'Blake Shelton', '2 Chains', 'Lil Wayne'], 1);
+new Question('Who is the former drummer for Nirvana that went on to become the frontman for the Foo Fighters?', 'Dave Grohl', ['Dave Grohl', 'Kurt Cobain', 'Chris Stapleton', 'Johnny Cash'], 2);
+new Question('Victoria Beckham was a member of which all girl English pop group formed in 1994?', 'The Spice Girls', ['The Spice Girls', 'Fifth Harmony', 'TLC', 'Destiny\'s Child'], 1);
+new Question('Released in 1992, what is the best selling soundtrack album of all time?', 'The Bodyguard', ['The Bodyguard', 'Aladdin', 'Gladiator', 'Batman Returns'], 2);
+new Question('"I\'d buy that for a dollar", is a catchphrase from what 1987 action movie set in Detroit, Michigan, in the near future?', 'Robocop', ['The Lost Boys', 'Lethal Weapon', 'Predator', 'Robocop'], 2);
+new Question('As a protest to Hollywood\'s portrayal of Native Americans in film, Marlon Brando declined an Academy Award for his performance in what movie?', 'The Godfather', ['The Godfather', 'Dirty Dancing', 'Ishtar', 'Fatal Attraction'], 2);
+new Question('In Disney\'s 1959 animated film Sleeping Beauty, who is Princess Aurora is betrothed to?', 'Prince Phillip', ['Belle', 'Prince Phillip', 'Prince Naveen', 'Prince Charming'], 2);
+new Question('Who produced and directed the American epic aviation war film "Hell\'s Angels", released in 1930?', 'Howard Hughes', ['Howard Hughes', 'William Powell', 'Leslie Howard', 'Fredric Marc'], 2);
+new Question('What was John Candy\'s character\'s name in the in 1987 comedy movie, "Planes, Trains, and Automobiles"?', 'Del Griffith', ['Del Griffith', 'Popeye', 'Frank Drebin', 'Barney Fife'], 3);
+new Question('In what year did Nintendo release its first game console in North America?', '1985', ['1985', '1980', '2000', '1995'], 2);
+new Question('American mobster Al Capone was sentenced to 11 years in federal prison for what crime', 'Tax Evasion', ['Tax Evasion', 'Murder', 'Trafficking', 'Kidnapping'], 2);
+new Question('How many people have walked on the moon?', 'Twelve', ['Twelve', 'One', 'Five', 'Fourteen'], 3);
+new Question('What is the name for the monetary unit used in Thailand?', 'Baht', ['Kyat', 'Baht', 'Riel', 'Rupee'], 2);
+new Question('The vehicle manufacturer Volvo was founded in what country?', 'Sweden', ['Finland', 'Norway', 'Sweden', 'Germany'], 2);
+new Question('In which country did cheddar cheese originate?', 'England', ['England', 'Netherlands', 'United States', 'Ireland'], 3);
+new Question('What is the name of the world’s fastest snake whose bite is almost 100% fatal?', 'Black Mamba', ['Black Mamba', 'King Cobra', 'Pit Viper', 'Sidewinder'], 2);
+new Question('The llama is native to which continent?', 'South America', ['North America', 'South America', 'Africa', 'Australia'], 3);
+new Question('The Great Red Spot is a giant storm located on which planet?', 'Jupiter', ['Saturn', 'Jupiter', 'Mars', 'Neptune'], 2);
+new Question('In humans, what is the only internal organ capable of regenerating lost tissue?', 'Liver', ['Liver', 'Spleen', 'Pancreas', 'kidney'], 3);
+new Question('What was the highest selling album of the 1980s in the United States?', 'Thriller', ['Thriller', 'Back in Black', 'Pretenders', 'Blizzard of Ozz'], 1);
+new Question('What was the title of Kayne West\'s debut album release in 2004?','The College Dropout',['The College Dropout', 'The Life of Pablo', 'Yeezus', 'Graduation'], 3);
+new Question('Who was the lead singer of the band Audioslave?','Chris Cornell',['Chris Cornell', 'Eddie Vedder', 'Sammy Hagar', 'Bruce Springsteen'], 2);
+new Question('New Orleans is known as the birthplace of what type of music?','Jazz',['Jazz', 'Rock', 'Country', 'Hip Hop'], 1);
+new Question('Which pop star sang the national anthem at the 50th Super Bowl?','Lady Gaga',['Lady Gaga', 'Justin Timberlake', 'Katy Perry', 'Taylor Swift'], 2);
+new Question('Who was the lead singer of the rock band Queen?','Freddie Mercury',['Freddie Mercury', 'Mick Jagger', 'Steven Tyler', 'Bono'], 2);
+new Question('Which music group has received the most Grammy Awards?','U2',['U2', 'Metallica', 'Rolling Stones', 'Aerosmith'], 2);
+new Question('Which planet has the most moons?','Jupiter',['Jupiter', 'Uranus', 'Neptune', 'Saturn'], 2);
+new Question('In computer science, what does "GUI" stand for?','Graphical user interface',['Graphical user interface', 'Global Unique Identifier', 'Gyroscopic Upper Stage', 'Gaming Under the Influence'], 2);
 
 // random number generator
 function randomNumGenerator(min, max) {
@@ -131,7 +132,22 @@ function gameQuestions() {
   countDownTimer();
   console.log(questionCounter);
   // pulling a random number from our array of questions
-  rand = randomNumGenerator(0, Question.allQuestions.length - 1);
+
+  if (questionCounter < 4) {
+    do { rand = randomNumGenerator(0, Question.allQuestions.length - 1);
+    } while (Question.allQuestions[rand].difficulty !== 1);
+  } else if (questionCounter < 7) {
+    do { rand = randomNumGenerator(0, Question.allQuestions.length - 1);
+    } while (Question.allQuestions[rand].difficulty !== 2);
+  } else {
+    for (var x = 0; x < Question.allQuestions.length; x++) {
+      if (Question.allQuestions[x].difficulty === 1 || Question.allQuestions[x].difficulty === 2) {
+        Question.allQuestions.splice(x, 1);
+      }
+    }
+    rand = randomNumGenerator(0, Question.allQuestions.length - 1);
+  }
+
   var q1 = Question.allQuestions[rand];
   console.log(q1.question);
   var pEl = document.createElement('p');
