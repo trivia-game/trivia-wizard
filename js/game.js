@@ -155,6 +155,7 @@ function gameQuestions() {
     }
     // creating button elements for each letter/answer, assigning the value of an answer and appending to the form element that holds the buttons/answers
     var button = document.createElement('button');
+    button.setAttribute('class', 'answerButton');
     var span = document.createElement('span');
     span.textContent = letterIndex;
     button.setAttribute('name', answerArray[i]);
@@ -184,8 +185,9 @@ function answerButtonHandler(e) {
   var target = e.target.name;
   var correctAnswer = Question.allQuestions[rand].answer;
   var answerChoice = e.srcElement;
-  var answerArray = Question.allQuestions[rand].setOfAnswers;
-  var answerButtonEls = document.getElementsByTagName('button');
+  // var answerArray = Question.allQuestions[rand].setOfAnswers;
+  var answerButtonEls = document.querySelectorAll('button.answerButton');
+  console.log(answerButtonEls);
   if (!e.target.name) {
     return;
   }
@@ -193,11 +195,8 @@ function answerButtonHandler(e) {
   timerEl.setAttribute('class', 'hidden-element');
   if (correctAnswer === target) {
     answerChoice.setAttribute('id', 'correct');
-    for (var i = 0; i < answerArray.length; i++) {
+    for (var i = 0; i < answerButtonEls.length; i++) {
       answerButtonEls[i].setAttribute('class', 'no-hover');
-      if (correctAnswer === answerArray[i]) {
-        answerButtonEls[i].setAttribute('id', 'correct');
-      }
     }
 
     User.currentUser['score'] += 1;
@@ -226,9 +225,10 @@ function answerButtonHandler(e) {
 
   }else{
     answerChoice.setAttribute('id', 'incorrect');
-    for (var j = 0; j < answerArray.length; j++) {
+    for (var j = 0; j < answerButtonEls.length; j++) {
       answerButtonEls[j].setAttribute('class', 'no-hover');
-      if (correctAnswer === answerArray[j]) {
+      if (correctAnswer === answerButtonEls[j].name) {
+        console.log(answerButtonEls[j]);
         answerButtonEls[j].setAttribute('id', 'correct');
       }
     }
