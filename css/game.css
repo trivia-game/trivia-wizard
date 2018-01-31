@@ -75,6 +75,16 @@ span {
   vertical-align: middle;
 }
 
+#qustion button{
+  width: 200px;
+  height: 80px;
+  margin: 20px auto;
+  font-size: 20px;
+  background-color: blueviolet;
+  color: blanchedalmond;
+  border-radius: 15px;
+  vertical-align: middle;
+}
 #answersAB button, #answersCD button {
   width: 300px;
   height: 80px;
@@ -138,13 +148,13 @@ span {
   color: blueviolet;
 }
 
-/* #play-again-button {
+.play-again {
   width: 200px;
-  height: 50px;
+  height: 80px;
+  margin: 20px auto;
   font-size: 20px;
-  background-color: green;
+  background-color: rgb(214, 67, 30);
   color: blanchedalmond;
-  border: 3px solid white;
-  border-radius: 5px;
-  margin-bottom: 10px;
-} */
+  border-radius: 15px;
+  vertical-align: middle;
+}

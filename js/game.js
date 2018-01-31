@@ -279,6 +279,7 @@ function endingGame(){
 
   //display play again button
   var playAgainBtn = document.createElement('button');
+  playAgainBtn.className = 'play-again';
   playAgainBtn.innerHTML = 'Play Again!';
   divQuestionEl.appendChild(playAgainBtn);
   playAgainBtn.addEventListener('click', pageReload);
