@@ -119,12 +119,17 @@ span {
   background-color: rgb(103, 168, 5);
 }
 
-#answers .incorrect {
+#answers #incorrect {
   background-color: red;
 }
 
-#answers .correct {
+
+#answers #correct {
   background-color: green;
+}
+
+#answersAB .no-hover, #answersCD .no-hover {
+  pointer-events: none;
 }
 
 #levelIndicator {
