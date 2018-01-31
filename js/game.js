@@ -27,13 +27,14 @@ var rand = 0;
 function User(username, password) {
   this.username = username;
   this.password = password;
+  this.topScore = 0;
   User.allUsers.push(this);
 }
 
 // if page is refreshed set current user's score to 0 and save it to localStorage
 // if currentUser's data exists in localStorage, retrieve it
 
-User.currentUser = {name: '', score: 0};
+User.currentUser = {name: '', score: 0, topScore: 0};
 if(performance.navigation.type === 1 && localStorage.currentUser){
   checkSavedCurrentUser();
   User.currentUser['score'] = 0;
@@ -183,6 +184,7 @@ function answerButtonHandler(e) {
     correct.play();
     
 
+    resetCurrentUserTopScore();
     //save currentUser to localStorage
     saveCurrentUser();
 
@@ -194,7 +196,7 @@ function answerButtonHandler(e) {
     //   clearCountDown();
     //   endingGame();
     // }else{
-    clearCountDown();
+    // clearCountDown();
     // creates button for next question
     var nextQuestionBtn = document.createElement('button');
     nextQuestionBtn.innerHTML = 'Next Question';
@@ -207,6 +209,9 @@ function answerButtonHandler(e) {
     clearCountDown();
     ticktock.pause();
     gameover.play();
+    resetCurrentUserTopScore();
+    saveCurrentUser();
+    updateCUToAllUser();
     //ending game
     endingGame();
   }
@@ -225,6 +230,7 @@ function checkSavedCurrentUser(){
   var retrieve = JSON.parse(localStorage.getItem('currentUser'));
   User.currentUser['name'] = retrieve.name;
   User.currentUser['score'] = retrieve.score;
+  User.currentUser['topScore'] = retrieve.topScore;
 
 }
 
@@ -304,6 +310,23 @@ function levelIndicator(){
 
 function removeLevelIndicator(){
   level.remove;
+}
+
+function resetCurrentUserTopScore(){
+  if(User.currentUser['score'] > User.currentUser['topScore']){
+    User.currentUser['topScore'] = User.currentUser['score'];
+  }
+}
+
+function updateCUToAllUser(){
+  User.allUsers = JSON.parse(localStorage.getItem('allUsers'));
+  for(var x = 0; x < User.allUsers.length; x++) {
+    if(User.allUsers[x].username === User.currentUser['name']) {
+      User.allUsers[x].topScore = User.currentUser['topScore'];
+      localStorage.setItem('allUsers', JSON.stringify(User.allUsers));
+    }
+  }
+
 }
 
 // calling the main game function on page load
