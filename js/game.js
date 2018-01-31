@@ -224,6 +224,7 @@ function answerButtonHandler(e) {
     clearCountDown();
     ticktock.pause();
     gameover.play();
+    resetCurrentUserScore();
     resetCurrentUserTopScore();
     saveCurrentUser();
     updateCUToAllUser();
@@ -267,6 +268,8 @@ function endingGame(){
   divLevelIndicatorEl.innerHTML = '';
   divQuestionEl.innerHTML = '';
   divAnswerEl.innerHTML = '';
+  clearCountDown();
+  timerEl.style.display = 'none';
 
   //display current user's name & score
   var nameScore = document.createElement('h2');
@@ -280,8 +283,7 @@ function endingGame(){
   divQuestionEl.appendChild(playAgainBtn);
   playAgainBtn.addEventListener('click', pageReload);
 
-  //reset current user's score & save into localStorage
-  resetCurrentUserScore();
+  //save user info into localStorage
   saveCurrentUser();
 
 }
@@ -310,7 +312,7 @@ function countDownTimer(){
 
 function clearCountDown(){
   clearInterval(downloadTimer);
-  document.getElementById('timer').innerHTML = '';
+  timerEl.innerHTML = '';
 }
 
 
