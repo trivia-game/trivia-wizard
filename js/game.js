@@ -7,11 +7,10 @@ var questionCounter = 0;
 var downloadTimer = null;
 
 // sound files
-var sparkle = new Audio('sound/sparkle.mp3');
+var correct = new Audio('sound/correct.mp3');
 var gameover = new Audio('sound/gameover.mp3');
 var ticktock = new Audio('sound/ticktock.mp3');
 var outoftime = new Audio('sound/outoftime.mp3');
-var laugh = new Audio('sound/laugh.mp3');
 
 // variables accessing elements in the HTML
 var sectionEl = document.getElementById('questions');
@@ -181,7 +180,7 @@ function answerButtonHandler(e) {
 
     User.currentUser['score'] += 1;
     ticktock.pause();
-    sparkle.play();
+    correct.play();
     
 
     //save currentUser to localStorage
