@@ -88,22 +88,25 @@ function gameQuestions() {
   for (var i = 0; i < answerArray.length; i++) {
     var letterIndex;
     if (i === 0) {
-      letterIndex = 'A) ';
+      letterIndex = 'A';
     } else if (i === 1) {
-      letterIndex = 'B) ';
+      letterIndex = 'B';
     } else if (i === 2) {
-      letterIndex = 'C) ' ;
+      letterIndex = 'C' ;
     } else {
-      letterIndex = 'D) ';
+      letterIndex = 'D';
     }
     // creating button elements for each letter/answer, assigning the value of an answer and appending to the form element that holds the buttons/answers
     var button = document.createElement('button');
+    var span = document.createElement('span');
+    span.textContent = letterIndex;
     button.setAttribute('name', answerArray[i]);
-    console.log(button);
-    button.innerHTML = '<span>' + letterIndex + '</span>' + answerArray[i];
+    button.innerHTML = answerArray[i];
     if (i === 0 || i === 1) {
+      divAnswerElAB.appendChild(span);
       divAnswerElAB.appendChild(button);
     } else if (i === 2 || i === 3) {
+      divAnswerElCD.appendChild(span);
       divAnswerElCD.appendChild(button);
     }
   }
