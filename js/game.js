@@ -116,7 +116,7 @@ function gameQuestions() {
   timerEl.removeAttribute('class', 'hidden-element');
 
   questionCounter += 1;
-  // countDownTimer();
+  countDownTimer();
   console.log(questionCounter);
   // pulling a random number from our array of questions
   rand = randomNumGenerator(0, Question.allQuestions.length - 1);
@@ -170,14 +170,15 @@ function gameQuestions() {
 function answerButtonHandler(e) {
   console.log(e);
   var target = e.target.name;
+  var correctAnswer = Question.allQuestions[rand].answer;
   var answerChoice = e.srcElement;
   if (!e.target.name) {
     return;
   }
   divAnswerEl.removeEventListener('click', answerButtonHandler);
   timerEl.setAttribute('class', 'hidden-element');
-  if (Question.allQuestions[rand].answer === target) {
-    answerChoice.setAttribute('class', 'correct');
+  if (correctAnswer === target) {
+    answerChoice.setAttribute('id', 'correct');
 
     User.currentUser['score'] += 1;
     ticktock.pause();
@@ -203,13 +204,25 @@ function answerButtonHandler(e) {
     nextQuestionBtn.addEventListener('click', nextQuestionHandler);
 
   }else{
-    answerChoice.setAttribute('class', 'incorrect');
+    var answerArray = Question.allQuestions[rand].setOfAnswers;
+    var answerButtonEls = document.getElementsByTagName('button');
+    answerChoice.setAttribute('id', 'incorrect');
+    for (var i = 0; i < answerArray.length; i++) {
+      answerButtonEls[i].setAttribute('class', 'no-hover');
+      if (correctAnswer === answerArray[i]) {
+        answerButtonEls[i].setAttribute('id', 'correct');
+      }
+    }
     console.log('incorrect');
     clearCountDown();
     ticktock.pause();
     gameover.play();
     //ending game
-    endingGame();
+    timerEl.innerHTML = '';
+    divLevelIndicatorEl.innerHTML = '<h1>Incorrect - Game Over<h1>';
+    window.setInterval(function() {
+      endingGame();
+    }, 3000);
   }
 }
 
@@ -234,10 +247,12 @@ function saveCurrentUser(){
 }
 
 function endingGame(){
+
   //retrieve currentUser info
   checkSavedCurrentUser();
 
   // clear out div
+  divLevelIndicatorEl.innerHTML = '';
   divQuestionEl.innerHTML = '';
   divAnswerEl.innerHTML = '';
 
