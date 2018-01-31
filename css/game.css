@@ -15,7 +15,7 @@ header{
 
 #header-title {
   text-align: center;
-  /* margin-right: 150px; */
+  margin-left: 150px;
 }
 
 h1 {
@@ -40,7 +40,7 @@ header img.flipped{
   
 nav{
   float: right;
-  width: 115px;
+  width: 110px;
   padding: 20px;
   padding-top: 30px;
 
