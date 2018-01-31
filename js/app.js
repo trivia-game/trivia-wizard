@@ -87,6 +87,7 @@ function checkLocalStorage() {
   if(localStorage.currentUser){
     var currentUser = JSON.parse(localStorage.getItem('currentUser'));
     User.currentUser['name'] = currentUser.name;
+    User.currentUser['topScore'] = currentUser.topScore;
 
   }
 }
@@ -149,12 +150,9 @@ function returnUser(){
     //don't display login form
     //instead display welcome back message
     welcomeBackGreeting();
+    checkLocalStorage();
     displayButton();
     dispalyLogoutBtn();
-
-  }else{
-    //display login form
-    //Add event listener to login-form
     formEl.addEventListener('submit', loginHandler);
   }
 
