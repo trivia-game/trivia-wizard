@@ -12,6 +12,7 @@ var divAnswerEl = document.getElementById('answers');
 var divAnswerElAB = document.getElementById('answersAB');
 var divAnswerElCD = document.getElementById('answersCD');
 var nextQuestionDiv = document.getElementById('next-question');
+var timerEl = document.getElementById('timer');
 
 var rand = 0;
 User.currentUser = {name: '', score: 0};
@@ -70,6 +71,9 @@ function shuffle(array) {
 // Main game question function
 function gameQuestions() {
   divAnswerEl.addEventListener('click', answerButtonHandler);
+
+  timerEl.removeAttribute('class', 'hidden-element');
+  
   questionCounter += 1;
   countDownTimer();
   console.log(questionCounter);
@@ -115,6 +119,7 @@ function gameQuestions() {
 //
 function answerButtonHandler(e) {
   divAnswerEl.removeEventListener('click', answerButtonHandler);
+  timerEl.setAttribute('class', 'hidden-element');
   console.log(e);
   var target = e.target.name;
   if (!e.target.name) {
@@ -128,7 +133,6 @@ function answerButtonHandler(e) {
 
     Question.allQuestions.splice(rand, 1);
     clearCountDown();
-
 
     if(questionCounter === 3){
       alert('Correct, but you have reached the max number of question');
@@ -187,7 +191,6 @@ function endingGame(){
 
   //display play again button
   var playAgainBtn = document.createElement('button');
-
   playAgainBtn.innerHTML = 'Play Again!';
   divQuestionEl.appendChild(playAgainBtn);
   playAgainBtn.addEventListener('click', pageReload);
