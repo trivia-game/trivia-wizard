@@ -3,13 +3,15 @@
 var formEl = document.getElementById('login-form');
 //get play-button html element
 var playGameSectionEl = document.getElementById('play-button');
+var divLogOutEl = document.getElementById('logout');
 //creating array for holding all user objects
 User.allUsers = [];
-//check localStorage to see if there is any saved user objects. If there is, will be pulled and replaced to User.allUsers
-checkLocalStorage();
 
 // creating a variable for current user name
 User.currentUser = {name: '', score: 0, topScore: 0};
+
+//check localStorage to see if there is any saved user objects. If there is, will be pulled and replaced to User.allUsers
+checkLocalStorage();
 
 // User constructor function. A new instance of User object will be pushed to User.allUsers
 function User(username, password) {
@@ -19,8 +21,12 @@ function User(username, password) {
   User.allUsers.push(this);
 }
 
-//Add event listener to login-form
-formEl.addEventListener('submit', loginHandler);
+if(performance.navigation.type === 1 || User.currentUser['name'].length > 0){
+  returnUser();
+}else{
+  formEl.addEventListener('submit', loginHandler);
+}
+
 
 // callback function to login form
 // when form is submitted, user name and password will be saved into name and password variables
@@ -35,7 +41,7 @@ function loginHandler(e) {
   // if name is found User.allUsers, welcome back greeting message will be printed using user's name
   // then current user name will be saved into localStorage
   for(var x = 0; x < User.allUsers.length; x++) {
-    if(User.allUsers[x].username === name) {
+    if(User.allUsers[x].username === name.toLowerCase()) {
       User.currentUser['topScore'] = User.allUsers[x].topScore;
       saveCurrentUser();
       welcomeBackGreeting();
@@ -57,6 +63,8 @@ function loginHandler(e) {
   //synchroize User.allUsers again by pulling from localStorage
   checkLocalStorage();
 
+  //display logout button
+  dispalyLogoutBtn();
   //finally display play game button
   displayButton();
 }
@@ -68,11 +76,18 @@ function saveToLocalstorage(){
 
 //function to pull User.allUsers from localStorage and reassign to global variable User.allUsers
 function checkLocalStorage() {
+  console.log('are you checking local storage?');
   if(localStorage.allUsers) {
     var users = JSON.parse(localStorage.getItem('allUsers'));
     for(var i in users){
       User.allUsers.push(users[i]);
     }
+  }
+
+  if(localStorage.currentUser){
+    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    User.currentUser['name'] = currentUser.name;
+
   }
 }
 
@@ -88,7 +103,7 @@ function displayButton() {
 function greeting() {
   formEl.innerHTML = '';
   var h3El = document.createElement('h3');
-  h3El.textContent = 'Hello ' + User.currentUser['name'];
+  h3El.textContent = 'Hello ' + User.currentUser['name'].charAt(0).toUpperCase() + User.currentUser['name'].slice(1);
   formEl.appendChild(h3El);
 }
 
@@ -97,7 +112,7 @@ function welcomeBackGreeting() {
   formEl.innerHTML = '';
   var h3El = document.createElement('h3');
   var h4El = document.createElement('h4');
-  h3El.textContent = 'Welcome Back! ' + User.currentUser['name'];
+  h3El.textContent = 'Welcome Back! ' + User.currentUser['name'].charAt(0).toUpperCase() + User.currentUser['name'].slice(1);
   h4El.textContent = 'Your highest score: ' + User.currentUser['topScore'];
   formEl.appendChild(h3El);
   formEl.appendChild(h4El);
@@ -106,4 +121,41 @@ function welcomeBackGreeting() {
 // function to save current user to localStorage
 function saveCurrentUser() {
   localStorage.setItem('currentUser', JSON.stringify(User.currentUser));
+}
+
+function dispalyLogoutBtn(){
+  var logOutBtn = document.createElement('button');
+  logOutBtn.innerHTML = 'Logout';
+  divLogOutEl.appendChild(logOutBtn);
+  logOutBtn.addEventListener('click', logOutHandler);
+}
+
+function logOutHandler(e){
+  e.preventDefault();
+  //remove logout button
+  divLogOutEl.innerHTML = '';
+  //remove currentUser from localStorage
+  localStorage.removeItem('currentUser');
+
+  //back to login (page reload)
+  location.reload();
+
+
+}
+
+function returnUser(){
+  //if currentUser exists in localStorage
+  if(User.currentUser['name'].length > 0){
+    //don't display login form
+    //instead display welcome back message
+    welcomeBackGreeting();
+    displayButton();
+    dispalyLogoutBtn();
+
+  }else{
+    //display login form
+    //Add event listener to login-form
+    formEl.addEventListener('submit', loginHandler);
+  }
+
 }
