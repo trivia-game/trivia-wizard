@@ -126,6 +126,7 @@ function saveCurrentUser() {
 
 function dispalyLogoutBtn(){
   var logOutBtn = document.createElement('button');
+  logOutBtn.className = 'log-out';
   logOutBtn.innerHTML = 'Logout';
   divLogOutEl.appendChild(logOutBtn);
   logOutBtn.addEventListener('click', logOutHandler);
