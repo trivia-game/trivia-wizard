@@ -80,7 +80,7 @@ function checkLocalStorage() {
 function displayButton() {
   var playButtonEl = document.createElement('button');
   playButtonEl.textContent = 'Play Game!';
-  playGameSectionEl.appendChild(playButtonEl);
+  formEl.appendChild(playButtonEl);
   playButtonEl.addEventListener ('click', function(){ window.location = 'game.html';});
 }
 
