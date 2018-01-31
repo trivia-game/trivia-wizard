@@ -1,7 +1,7 @@
 /* Fonts from Google Fonts--
 font-family: 'Fugaz One', cursive;
-font-family: 'Zilla Slab Highlight', cursive;
-font-family: 'Patrick Hand', cursive; */
+font-family: 'Lilita One', cursive;
+font-family: 'Sniglet', cursive; */
 
 
 body{
@@ -35,6 +35,14 @@ header img{
   display: inline-block;
   border: #0c023d, solid;
 }
+header img.flipped{
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
   
 nav{
   float: right;
@@ -50,12 +58,18 @@ nav a {
 }
 
 section {
-  font-family: 'Patrick Hand', cursive;
+  font-family: 'Lilita One', cursive;
   display: inline-block;
   width: 60%;
   padding-left: 20%;
   padding-right: 20%;
   align-content: center;
+}
+section#play-button, h2, p{
+  font-family: 'Sniglet', cursive;
+  font-size: 20px;
+  letter-spacing: 1px;
+  word-spacing: 4px;
 }
 form{
   padding: 0%;
