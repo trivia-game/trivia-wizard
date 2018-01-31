@@ -2,6 +2,7 @@
 
 // Array that all questions are being pushed to from the constructor
 Question.allQuestions = [];
+
 var questionCounter = 0;
 var downloadTimer = null;
 
@@ -20,17 +21,30 @@ var divAnswerElAB = document.getElementById('answersAB');
 var divAnswerElCD = document.getElementById('answersCD');
 var nextQuestionDiv = document.getElementById('next-question');
 var timerEl = document.getElementById('timer');
-
+var divLevelIndicatorEl = document.getElementById('levelIndicator');
+var level = document.getElementById('level');
 var rand = 0;
-User.currentUser = {name: '', score: 0};
+
 function User(username, password) {
   this.username = username;
   this.password = password;
   User.allUsers.push(this);
 }
-if(localStorage.currentUser){
+
+// if page is refreshed set current user's score to 0 and save it to localStorage
+// if currentUser's data exists in localStorage, retrieve it
+
+User.currentUser = {name: '', score: 0};
+if(performance.navigation.type === 1 && localStorage.currentUser){
+  checkSavedCurrentUser();
+  User.currentUser['score'] = 0;
+  saveCurrentUser();
+  //set questionCounter to 0 as well
+  questionCounter = 0;
+}else if(performance.navigation.type === 0 && localStorage.currentUser){
   checkSavedCurrentUser();
 }
+
 
 // Constructor function
 function Question(question, answer, setOfAnswers) {
@@ -141,6 +155,15 @@ function gameQuestions() {
       divAnswerElCD.appendChild(button);
     }
   }
+
+  //remove previous level indicator
+  if(divLevelIndicatorEl.childElementCount !== 0){
+    removeLevelIndicator();
+    levelIndicator();
+  }else{
+    //display current level
+    levelIndicator();
+  }
 }
 
 // Event Listener on div that holds questions
@@ -167,18 +190,18 @@ function answerButtonHandler(e) {
     Question.allQuestions.splice(rand, 1);
     clearCountDown();
 
-    if(questionCounter === 3){
-      alert('Correct, but you have reached the max number of question');
-      clearCountDown();
-      endingGame();
-    }else{
-      clearCountDown();
-      // creates button for next question
-      var nextQuestionBtn = document.createElement('button');
-      nextQuestionBtn.innerHTML = 'Next Question';
-      nextQuestionDiv.appendChild(nextQuestionBtn);
-      nextQuestionBtn.addEventListener('click', nextQuestionHandler);
-    }
+    // if(questionCounter === 3){
+    //   alert('Correct, but you have reached the max number of question');
+    //   clearCountDown();
+    //   endingGame();
+    // }else{
+    clearCountDown();
+    // creates button for next question
+    var nextQuestionBtn = document.createElement('button');
+    nextQuestionBtn.innerHTML = 'Next Question';
+    nextQuestionDiv.appendChild(nextQuestionBtn);
+    nextQuestionBtn.addEventListener('click', nextQuestionHandler);
+
   }else{
     answerChoice.setAttribute('class', 'incorrect');
     console.log('incorrect');
@@ -261,6 +284,27 @@ function countDownTimer(){
 function clearCountDown(){
   clearInterval(downloadTimer);
   document.getElementById('timer').innerHTML = '';
+}
+
+
+function levelIndicator(){
+  if(questionCounter < 4){
+    //display level 1
+    level.textContent = 'Level 1';
+    divLevelIndicatorEl.appendChild(level);
+  }else if(questionCounter > 3 && questionCounter < 8){
+    //display level 2
+    level.textContent = 'Level 2';
+    divLevelIndicatorEl.appendChild(level);
+  }else{
+    //display level 3
+    level.textContent = 'Level 3';
+    divLevelIndicatorEl.appendChild(level);
+  }
+}
+
+function removeLevelIndicator(){
+  level.remove;
 }
 
 // calling the main game function on page load
