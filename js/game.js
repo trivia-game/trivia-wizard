@@ -301,7 +301,7 @@ function endingGame(){
 
   //display current user's name & score
   var nameScore = document.createElement('h2');
-  nameScore.textContent = User.currentUser['name'] + ', your score is: ' + User.currentUser['score'];
+  nameScore.textContent = User.currentUser['name'].charAt(0).toUpperCase() + User.currentUser['name'].slice(1) + ', your score is: ' + User.currentUser['score'];
 
   divQuestionEl.appendChild(nameScore);
 
