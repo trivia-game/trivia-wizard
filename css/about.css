@@ -13,23 +13,29 @@ header{
   margin-bottom: 25px;
 }
 
-header img{
-  width: 200px;
-  display: flex;
-  margin-left: 500px;
-  border: #0c023d, solid;
-}
-
 #header-title {
   text-align: center;
+  /* margin-right: 150px; */
+}
+
+h1 {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 20px;
+}
+
+header img{
+  width: 150px;
+  display: inline-block;
+  border: #0c023d, solid;
 }
   
 nav{
   float: right;
+  width: 110px;
   padding: 20px;
-  position: absolute;
-  top: 40px;
-  right: 20px;
+  padding-top: 30px;
+
 }
 
 nav a {
