@@ -157,10 +157,10 @@ function gameQuestions() {
   }
 
   //remove previous level indicator
-  if(divLevelIndicatorEl.childElementCount !== 0){
+  if (divLevelIndicatorEl.childElementCount !== 0){
     removeLevelIndicator();
     levelIndicator();
-  }else{
+  } else {
     //display current level
     levelIndicator();
   }
@@ -271,7 +271,7 @@ function countDownTimer(){
   downloadTimer = setInterval(function(){
     document.getElementById('timer').innerHTML = --timeleft;
     ticktock.play();
-    if(timeleft <= 0){
+    if (timeleft <= 0){
       ticktock.pause();
       outoftime.play();
       clearInterval(downloadTimer);
@@ -288,17 +288,17 @@ function clearCountDown(){
 
 
 function levelIndicator(){
-  if(questionCounter < 4){
+  if (questionCounter < 4){
     //display level 1
-    level.textContent = 'Level 1';
+    level.textContent = 'Question ' + questionCounter + ' - Level EASY';
     divLevelIndicatorEl.appendChild(level);
-  }else if(questionCounter > 3 && questionCounter < 8){
+  } else if (questionCounter > 3 && questionCounter < 7){
     //display level 2
-    level.textContent = 'Level 2';
+    level.textContent = 'Question ' + questionCounter + ' - Level MEDIUM';
     divLevelIndicatorEl.appendChild(level);
-  }else{
+  } else {
     //display level 3
-    level.textContent = 'Level 3';
+    level.textContent = 'Question ' + questionCounter + ' - Level HARD';
     divLevelIndicatorEl.appendChild(level);
   }
 }
