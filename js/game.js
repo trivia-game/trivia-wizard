@@ -136,18 +136,15 @@ function gameQuestions() {
   }
 }
 
-// Event Listener on form
-
-
-//
+// Event Listener on div that holds questions
 function answerButtonHandler(e) {
-  divAnswerEl.removeEventListener('click', answerButtonHandler);
-  timerEl.setAttribute('class', 'hidden-element');
   console.log(e);
   var target = e.target.name;
   if (!e.target.name) {
     return;
   }
+  divAnswerEl.removeEventListener('click', answerButtonHandler);
+  timerEl.setAttribute('class', 'hidden-element');
   if (Question.allQuestions[rand].answer === target) {
     User.currentUser['score'] += 1;
 
