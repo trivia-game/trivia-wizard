@@ -40,6 +40,27 @@ new Question('Emma Watson is known for playing which character in Harry Potter?'
 new Question('Bruce Banner turns into what fictional superhero when he becomes angry?', 'The Hulk', ['The Hulk', 'Batman', 'Ironman', 'Antman']);
 new Question('Which actor played Marty McFly in the 1980\'s sci-fi classic Back to the Future?', 'Michael J. Fox', ['Michael J. Fox', 'John Cusak', 'Tom Cruise', 'Michael Keaton']);
 new Question('Tyler Durden is a fictional character appearing as the central protagonist and antagonist in what 1999 american film?', 'Fight Club', ['Fight Club', 'The Matrix', 'The Green Mile', 'The Sixth Sense']);
+new Question('What is the stage name of the member of Public Enemy who would later have a reality dating show?', 'Flavor Flav', ['Flavor Flav', 'Chuck D', 'Ice Cube' , 'Ol\' Dirty Bastard']);
+new Question('Who interrupted Taylor Swift\'s acceptance speech at the 2009 Video Music Awards?', 'Kanye West', ['Kanye West', 'Blake Shelton', '2 Chains', 'Lil Wayne']);
+new Question('Who is the former drummer for Nirvana that went on to become the frontman for the Foo Fighters?', 'Dave Grohl', ['Dave Grohl', 'Kurt Cobain', 'Chris Stapleton', 'Johnny Cash']);
+new Question('Victoria Beckham was a member of which all girl English pop group formed in 1994?', 'The Spice Girls', ['The Spice Girls', 'Fifth Harmony', 'TLC', 'Destiny\'s Child']);
+new Question('Released in 1992, what is the best selling soundtrack album of all time?', 'The Bodygaurd', ['The Bodyguard', 'Aladdin', 'Gladiator', 'Batman Returns']);
+new Question('\"I\'d buy that for a dollar\", is a catchphrase from what 1987 action movie set in Detroit, Michigan, in the near future?', 'Robocop', ['The Lost Boys', 'Lethal Weapon', 'Predator', 'Robocop']);
+new Question('As a protest to Hollywood\'s portrayal of Native Americans in film, Marlon Brando declined an Academy Award for his performance in what movie?', 'The Godfather', ['The Godfather', 'Dirty Dancing', 'Ishtar', 'Fatal Attraction']);
+new Question('In Disney\'s 1959 animated film Sleeping Beauty, who is Princess Aurora is betrothed to?', 'Prince Phillip', ['Belle', 'Prince Phillip', 'Prince Naveen', 'Prince Charming']);
+new Question('Who produced and directed the American epic aviation war film \"Hell\'s Angels\", released in 1930?', 'Howard Hughes', ['Howard Hughes', 'William Powell', 'Leslie Howard', 'Fredric Marc']);
+new Question('What was John Candy\'s character\'s name in the in 1987 comedy movie, \"Planes, Trains, and Automobiles\"?', 
+'Del Griffith', ['Del Griffith', 'Popeye', 'Frank Drebin', 'Barney Fife']);
+new Question('In what year did Nintendo release its first game console in North America?', '1985', ['1985', '1980', '2000', '1995']);
+new Question('American mobster Al Capone was sentenced to 11 years in federal prison for what crime', 'Tax Evasion', ['Tax Evasion', 'Murder', 'Trafficing', 'Kidnapping']);
+new Question('How many people have walked on the moon?', 'Twelve', ['Twelve', 'One', 'Five', 'Fourteen']);
+new Question('What is the name for the monetary unit used in Thailand?', 'Baht', ['Kyat', 'Baht', 'Riel', 'Rupee']);
+new Question('The vehicle manufacturer Volvo was founded in what country?', 'Sweden', ['Finland', 'Norway', 'Sweden', 'Germany']);
+new Question('In which country did cheddar cheese originate?', 'England', ['England', 'Netherlands', 'United States', 'Ireland']);
+new Question('What is the name of the world’s fastest snake whose bite is almost 100% fatal?', 'Black Mamba', ['Black Mamba', 'King Cobra', 'Pit Viper', 'Sidewinder']);
+new Question('The llama is native to which continent?', 'South America', ['North America', 'South America', 'Africa', 'Australia']);
+new Question('The Great Red Spot is a giant storm located on which planet?', 'Jupiter', ['Saturn', 'Jupiter', 'Mars', 'Neptune']);
+new Question('In humans, what is the only internal organ capable of regenerating lost tissue?', 'Liver', ['Liver', 'Spleen', 'Pancreas', 'kidney']);
 
 // random number generator
 function randomNumGenerator(min, max) {
