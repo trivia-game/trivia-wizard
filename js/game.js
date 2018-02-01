@@ -97,13 +97,13 @@ new Question('In what city was the coffee chain Starbucks founded?', 'Seattle', 
 new Question('In movie ratings, what do the letters PG stand for?', 'Parental Guidance', ['Parental Guidance', 'Pretty Good', 'Pretty Great', 'Positively Grand'], 1);
 new Question('Who is credited with suggesting the word "hello" be used when answering the telephone?', 'Thomas Edison', ['Thomas Edison','Alexander Graham Bell','Nikola Tesla','Elisha Gray'], 3);
 new Question('The Panama Canal is found in what country?', 'Panama', ['Panama', 'United States', 'Japan', 'France'], 1);
-new Question('Who wrote the young adult vampire-romance novel "Twilight"?', 'Stephanie Meyer', ['Stephanie Meyer', 'JK Rowling', 'Roald Dahl', 'George RR Martin'], 1);
+new Question('Who wrote the young adult vampire-romance novel "Twilight"?', 'Stephanie Meyer', ['Stephanie Meyer', 'JK Rowling', 'Roald Dahl', 'George RR Martin'], 2);
 new Question('What is the largest species of terrestrial crab in the world?', 'Coconut Crab', ['Coconut Crab', 'Dungeness Crab', 'Hermit Crab', 'King Crab'], 3);
-new Question('What is a group of whales called?', 'Pod', ['Pod', 'Clan', 'Gathering', 'Collection'], 1);
+new Question('What is a group of whales called?', 'Pod', ['Pod', 'Clan', 'Gathering', 'Collection'], 2);
 new Question('What is Michael J Fox\'s middle name?', 'Andrew', ['Andrew', 'Joseph', 'Joshua', 'Christopher'], 3);
 new Question('What city is known as the windy city?', 'Chicago', ['Chicago', 'New York', 'Seattle', 'Boston'], 1);
 new Question('How many hearts does an octopus have?', 'Three', ['One', 'Two', 'Three', 'Four'], 3);
-new Question('An Alaskan Malamute is a type of what?', 'Dog', ['Dog', 'Cat', 'Squirrel', 'Whale'], 1);
+new Question('An Alaskan Malamute is a type of what?', 'Dog', ['Dog', 'Cat', 'Squirrel', 'Whale'], 3);
 
 // random number generator
 function randomNumGenerator(min, max) {
@@ -145,7 +145,7 @@ function gameQuestions() {
     do { rand = randomNumGenerator(0, Question.allQuestions.length - 1);
     } while (Question.allQuestions[rand].difficulty !== 2);
   } else {
-    for (var x = 0; x < Question.allQuestions.length; x++) {
+    for (var x = Question.allQuestions.length - 1; x >= 0 ; x--) {
       if (Question.allQuestions[x].difficulty === 1 || Question.allQuestions[x].difficulty === 2) {
         Question.allQuestions.splice(x, 1);
       }
