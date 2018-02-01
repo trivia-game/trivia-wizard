@@ -11,6 +11,8 @@ var correct = new Audio('sound/correct.mp3');
 var gameover = new Audio('sound/gameover.mp3');
 var ticktock = new Audio('sound/ticktock.mp3');
 var outoftime = new Audio('sound/outoftime.mp3');
+var winner = new Audio('sound/sparkle.mp3');
+var soundsArray = [correct, gameover, ticktock, outoftime, winner];
 
 // variables accessing elements in the HTML
 var divQuestionEl = document.getElementById('question');
@@ -47,7 +49,6 @@ if(performance.navigation.type === 1 && localStorage.currentUser){
   checkSavedCurrentUser();
   returnUser();
 }
-
 
 // Constructor function
 function Question(question, answer, setOfAnswers, difficulty) {
@@ -230,9 +231,8 @@ function answerButtonHandler(e) {
     }
 
     User.currentUser['score'] += 1;
-    ticktock.pause();
-    correct.play();
-
+    soundsArray[2].pause();
+    soundsArray[0].play();
 
     resetCurrentUserTopScore();
     //save currentUser to localStorage
@@ -264,8 +264,8 @@ function answerButtonHandler(e) {
     }
     console.log('incorrect');
     clearCountDown();
-    ticktock.pause();
-    gameover.play();
+    soundsArray[2].pause();
+    soundsArray[1].play();
     // resetCurrentUserScore();
     resetCurrentUserTopScore();
     saveCurrentUser();
@@ -335,6 +335,7 @@ function endingGame(){
     newHiH3.textContent = 'You are a Trivia Master! Keep going to reach Trivia Wizard status!'; 
   } else if (User.currentUser['score'] > 8) {
     newHiH3 = document.createElement('h3');
+    soundsArray[4].play();
     newHiH3.textContent = 'Congrats, you are a Trivia Wizard!';
   }
   divQuestionEl.appendChild(nameScore);
@@ -364,10 +365,10 @@ function countDownTimer(){
   var timeleft = 10;
   downloadTimer = setInterval(function(){
     document.getElementById('timer').innerHTML = --timeleft;
-    ticktock.play();
+    soundsArray[2].play();
     if (timeleft <= 0){
-      ticktock.pause();
-      outoftime.play();
+      soundsArray[2].pause();
+      soundsArray[3].play();
       clearInterval(downloadTimer);
       document.getElementById('timer').innerHTML = '';
       endingGame();
