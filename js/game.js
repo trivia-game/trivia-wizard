@@ -145,6 +145,9 @@ function gameQuestions() {
         Question.allQuestions.splice(x, 1);
       }
     }
+    if (Question.allQuestions.length === 0) {
+      endingGame();
+    }
     rand = randomNumGenerator(0, Question.allQuestions.length - 1);
   }
 
