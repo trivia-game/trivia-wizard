@@ -6,11 +6,16 @@ For our Code Fellows 201 final group project, we created a trivia game applicati
 Our minimum viable product (MVP) included a login and welcome page, presenting the user with a total of three questions chosen at random from a pool of questions with four multiple choice answers arranged in a random order, and displaying their score at the end. 
 
 Our stretch goals included:
-more questions so that the game didn't end after three
-adding a timer for answering a question
-displaying the user's high score on login
-difficulty levels for questions with increasing difficulty
-lifelines (skip a question, 50/50, time extension) - we didn't get to these.
+
+- More questions so that the game didn't end after three
+
+- Adding a timer for answering a question
+
+- displaying the user's high score on login
+
+- difficulty levels for questions with increasing difficulty
+
+- lifelines (skip a question, 50/50, time extension) - we didn't get to these.
 
 We set up the login so that the user's name and password are stored in local storage and they are greeted with a 'Welcome back, [user]!' message if they have played before, or a 'Hello, [user]!' if they're a new user. 
 
