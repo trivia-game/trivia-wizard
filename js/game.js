@@ -34,20 +34,17 @@ function User(username, password) {
 
 // if page is refreshed set current user's score to 0 and save it to localStorage
 // if currentUser's data exists in localStorage, retrieve it
-
 User.currentUser = {name: '', score: 0, topScore: 0};
 if(performance.navigation.type === 1 && localStorage.currentUser){
   checkSavedCurrentUser();
   returnUser();
   User.currentUser['score'] = 0;
   saveCurrentUser();
-  //set questionCounter to 0 as well
   questionCounter = 0;
 }else if(performance.navigation.type === 0 && localStorage.currentUser){
   checkSavedCurrentUser();
   returnUser();
 }
-
 
 // Constructor function
 function Question(question, answer, setOfAnswers, difficulty) {
@@ -119,7 +116,6 @@ function shuffle(array) {
 
   // While there remain elements to shuffle...
   while (0 !== currentIndex) {
-
     // Pick a remaining element...
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex -= 1;
@@ -129,21 +125,17 @@ function shuffle(array) {
     array[currentIndex] = array[randomIndex];
     array[randomIndex] = temporaryValue;
   }
-
   return array;
 }
 
 // Main game question function
 function gameQuestions() {
   divAnswerEl.addEventListener('click', answerButtonHandler);
-
   timerEl.removeAttribute('class', 'hidden-element');
-
   questionCounter += 1;
   countDownTimer();
-  console.log(questionCounter);
-  // pulling a random number from our array of questions
 
+  // pulling a random number from our array of questions
   if (questionCounter < 4) {
     do { rand = randomNumGenerator(0, Question.allQuestions.length - 1);
     } while (Question.allQuestions[rand].difficulty !== 1);
@@ -163,14 +155,15 @@ function gameQuestions() {
   }
 
   var q1 = Question.allQuestions[rand];
-  console.log(q1.question);
   var pEl = document.createElement('p');
-  console.log(pEl);
   pEl.textContent = q1.question;
+
   //appending random question to an element in game.html
   divQuestionEl.appendChild(pEl);
+
   // shuffling the array of possible answer so that they appear in a random order and assigning to a variable
   var answerArray = shuffle(q1.setOfAnswers);
+
   // for loop to assign a letter to each question in the correct order
   for (var i = 0; i < answerArray.length; i++) {
     var letterIndex;
@@ -183,7 +176,8 @@ function gameQuestions() {
     } else {
       letterIndex = 'D';
     }
-    // creating button elements for each letter/answer, assigning the value of an answer and appending to the form element that holds the buttons/answers
+
+    // creating button elements for each letter/answer, assigning the value of an answer and appending to the element that holds the buttons/answers
     var button = document.createElement('button');
     button.setAttribute('class', 'answerButton');
     var span = document.createElement('span');
@@ -211,16 +205,14 @@ function gameQuestions() {
 
 // Event Listener on div that holds questions
 function answerButtonHandler(e) {
-  console.log(e);
   var target = e.target.name;
   var correctAnswer = Question.allQuestions[rand].answer;
   var answerChoice = e.srcElement;
-  // var answerArray = Question.allQuestions[rand].setOfAnswers;
   var answerButtonEls = document.querySelectorAll('button.answerButton');
-  console.log(answerButtonEls);
   if (!e.target.name) {
     return;
   }
+
   divAnswerEl.removeEventListener('click', answerButtonHandler);
   timerEl.setAttribute('class', 'hidden-element');
   if (correctAnswer === target) {
@@ -232,44 +224,32 @@ function answerButtonHandler(e) {
     User.currentUser['score'] += 1;
     ticktock.pause();
     correct.play();
-
-
+    //reset and save currentUser to localStorage
     resetCurrentUserTopScore();
-    //save currentUser to localStorage
     saveCurrentUser();
-
     Question.allQuestions.splice(rand, 1);
     clearCountDown();
 
-    // if(questionCounter === 3){
-    //   alert('Correct, but you have reached the max number of question');
-    //   clearCountDown();
-    //   endingGame();
-    // }else{
-    // clearCountDown();
-    // creates button for next question
     var nextQuestionBtn = document.createElement('button');
     nextQuestionBtn.innerHTML = 'Next Question';
     nextQuestionDiv.appendChild(nextQuestionBtn);
     nextQuestionBtn.addEventListener('click', nextQuestionHandler);
 
-  }else{
+  } else {
     answerChoice.setAttribute('id', 'incorrect');
     for (var j = 0; j < answerButtonEls.length; j++) {
       answerButtonEls[j].setAttribute('class', 'no-hover');
       if (correctAnswer === answerButtonEls[j].name) {
-        console.log(answerButtonEls[j]);
         answerButtonEls[j].setAttribute('id', 'correct');
       }
     }
-    console.log('incorrect');
     clearCountDown();
     ticktock.pause();
     gameover.play();
-    // resetCurrentUserScore();
     resetCurrentUserTopScore();
     saveCurrentUser();
     updateCUToAllUser();
+
     //ending game
     timerEl.innerHTML = '';
     endGameMsgEl.innerHTML = '<h2>Incorrect - Game Over</h2>';
@@ -287,11 +267,9 @@ function nextQuestionHandler(){
   gameQuestions();
 }
 
-
 function checkSavedCurrentUser(){
   var retrieve = JSON.parse(localStorage.getItem('currentUser'));
   User.currentUser['name'] = retrieve.name;
-  // User.currentUser['score'] = retrieve.score;
   User.currentUser['topScore'] = retrieve.topScore;
 
 }
@@ -301,7 +279,6 @@ function saveCurrentUser(){
 }
 
 function endingGame(){
-
   //retrieve currentUser info
   checkSavedCurrentUser();
 
@@ -317,6 +294,7 @@ function endingGame(){
   var nameScore = document.createElement('h2');
   nameScore.textContent = User.currentUser['name'].charAt(0).toUpperCase() + User.currentUser['name'].slice(1) + ', your score is: ' + User.currentUser['score'];
 
+  // display message to user
   var newHiH3 = document.createElement('h3');
   if (User.currentUser['score'] === 0) {
     newHiH3 = document.createElement('h3');
@@ -332,7 +310,7 @@ function endingGame(){
     newHiH3.textContent = 'Well done, you are on your way to becoming a Trivia Wizard.';
   } else if (User.currentUser['score'] < 9) {
     newHiH3 = document.createElement('h3');
-    newHiH3.textContent = 'You are a Trivia Master! Keep going to reach Trivia Wizard status!'; 
+    newHiH3.textContent = 'You are a Trivia Master! Keep going to reach Trivia Wizard status!';
   } else if (User.currentUser['score'] > 8) {
     newHiH3 = document.createElement('h3');
     newHiH3.textContent = 'Congrats, you are a Trivia Wizard!';
@@ -349,50 +327,42 @@ function endingGame(){
 
   //save user info into localStorage
   saveCurrentUser();
-
 }
+
 function pageReload(){
   location.reload();
-  // resetCurrentUserScore();
-}
-
-function resetCurrentUserScore(){
-  User.currentUser['score'] = 0;
 }
 
 function countDownTimer(){
   var timeleft = 10;
-  downloadTimer = setInterval(function(){
+  downloadTimer = setInterval(function() {
     document.getElementById('timer').innerHTML = --timeleft;
     ticktock.play();
-    if (timeleft <= 0){
+    if (timeleft <= 0) {
       ticktock.pause();
       outoftime.play();
       clearInterval(downloadTimer);
       document.getElementById('timer').innerHTML = '';
       endingGame();
     }
-  },1000);
+  }, 1000);
 }
 
-function clearCountDown(){
+function clearCountDown() {
   clearInterval(downloadTimer);
   timerEl.innerHTML = '';
 }
 
-
-function levelIndicator(){
-  if (questionCounter < 4){
-    //display level 1
+// display level the user is on
+function levelIndicator() {
+  if (questionCounter < 4) {
     level.textContent = 'Question ' + questionCounter + ' - Level EASY';
     divLevelIndicatorEl.appendChild(level);
-  } else if (questionCounter > 3 && questionCounter < 7){
-    //display level 2
+  } else if (questionCounter > 3 && questionCounter < 7) {
     level.textContent = 'Question ' + questionCounter + ' - Level MEDIUM';
     level.setAttribute('id', 'medium-difficulty');
     divLevelIndicatorEl.appendChild(level);
   } else {
-    //display level 3
     level.textContent = 'Question ' + questionCounter + ' - Level HARD';
     level.setAttribute('id', 'hard-difficulty');
     divLevelIndicatorEl.appendChild(level);
@@ -404,7 +374,7 @@ function removeLevelIndicator(){
 }
 
 function resetCurrentUserTopScore(){
-  if(User.currentUser['score'] > User.currentUser['topScore']){
+  if(User.currentUser['score'] > User.currentUser['topScore']) {
     User.currentUser['topScore'] = User.currentUser['score'];
   }
 }
@@ -417,7 +387,6 @@ function updateCUToAllUser(){
       localStorage.setItem('allUsers', JSON.stringify(User.allUsers));
     }
   }
-
 }
 
 function dispalyLogoutBtn(){
@@ -439,27 +408,20 @@ function logOutHandler(e){
 
   //back to index.page
   window.location.href = 'index.html';
-
-
 }
 
-function returnUser(){
+function returnUser() {
   //if currentUser exists in localStorage
-  if(User.currentUser['name'].length > 0){
+  if (User.currentUser['name'].length > 0) {
     //don't display login form
     //instead display welcome back message
     dispalyLogoutBtn();
-
-  }else{
-    //display login form
-    //Add event listener to login-form
   }
-
 }
 
 function updatingCurrentUserAllUserObject(){
-  for(var i in User.allUsers){
-    if(User.allUsers[i].name === User.currentUser['name']){
+  for (var i in User.allUsers) {
+    if (User.allUsers[i].name === User.currentUser['name']) {
       User.allUsers[i].topScore = User.currentUser['topScore'];
     }
   }
