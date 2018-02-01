@@ -94,6 +94,17 @@ new Question('Who was the lead singer of the rock band Queen?','Freddie Mercury'
 new Question('Which music group has received the most Grammy Awards?','U2',['U2', 'Metallica', 'Rolling Stones', 'Aerosmith'], 2);
 new Question('Which planet has the most moons?','Jupiter',['Jupiter', 'Uranus', 'Neptune', 'Saturn'], 2);
 new Question('In computer science, what does "GUI" stand for?','Graphical user interface',['Graphical user interface', 'Global Unique Identifier', 'Gyroscopic Upper Stage', 'Gaming Under the Influence'], 2);
+new Question('In what city was the coffee chain Starbucks founded?', 'Seattle', ['Seattle', 'New York', 'Portland', 'San Francisco'], 1);
+new Question('In movie ratings, what do the letters PG stand for?', 'Parental Guidance', ['Parental Guidance', 'Pretty Good', 'Pretty Great', 'Positively Grand'], 1);
+new Question('Who is credited with suggesting the word "hello" be used when answering the telephone?', 'Thomas Edison', ['Thomas Edison','Alexander Graham Bell','Nikola Tesla','Elisha Gray'], 3);
+new Question('The Panama Canal is found in what country?', 'Panama', ['Panama', 'United States', 'Japan', 'France'], 1);
+new Question('Who wrote the young adult vampire-romance novel "Twilight"?', 'Stephanie Meyer', ['Stephanie Meyer', 'JK Rowling', 'Roald Dahl', 'George RR Martin'], 1);
+new Question('What is the largest species of terrestrial crab in the world?', 'Coconut Crab', ['Coconut Crab', 'Dungeness Crab', 'Hermit Crab', 'King Crab'], 3);
+new Question('What is a group of whales called?', 'Pod', ['Pod', 'Clan', 'Gathering', 'Collection'], 1);
+new Question('What is Michael J Fox\'s middle name?', 'Andrew', ['Andrew', 'Joseph', 'Joshua', 'Christopher'], 3);
+new Question('What city is known as the windy city?', 'Chicago', ['Chicago', 'New York', 'Seattle', 'Boston'], 1);
+new Question('How many hearts does an octopus have?', 'Three', ['One', 'Two', 'Three', 'Four'], 3);
+new Question('An Alaskan Malamute is a type of what?', 'Dog', ['Dog', 'Cat', 'Squirrel', 'Whale'], 1);
 
 // random number generator
 function randomNumGenerator(min, max) {
