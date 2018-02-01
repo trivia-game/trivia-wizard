@@ -35,7 +35,7 @@ function loginHandler(e) {
   e.preventDefault();
   var name = e.target.userName.value;
   var password = e.target.password.value;
-  User.currentUser['name'] = name;
+  User.currentUser['name'] = name.toLowerCase();
 
   // check if entered name can be found in the previously saved user objects
   // if name is found User.allUsers, welcome back greeting message will be printed using user's name
