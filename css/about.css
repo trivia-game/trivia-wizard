@@ -55,6 +55,11 @@ nav a {
 section img {
   margin: 0 auto;
   height: 200px;
+  border: 6px ridge white;
+}
+
+section img:hover {
+  transform: scale(1.1);
 }
 
 #about {
