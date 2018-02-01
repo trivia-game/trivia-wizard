@@ -165,7 +165,7 @@ span {
 #levelIndicator {
   margin: 0 auto;
   text-align: center;
-  color: blueviolet;
+  color: green;
 }
 
 .play-again {
@@ -183,6 +183,14 @@ span {
   background-color: rgb(252, 81, 38);
 }
 
-button:focus{
+button:focus {
   outline: none;
+}
+
+#medium-difficulty {
+  color: orange;
+}
+
+#hard-difficulty {
+  color: red;
 }

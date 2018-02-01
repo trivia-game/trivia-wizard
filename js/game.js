@@ -368,10 +368,12 @@ function levelIndicator(){
   } else if (questionCounter > 3 && questionCounter < 7){
     //display level 2
     level.textContent = 'Question ' + questionCounter + ' - Level MEDIUM';
+    level.setAttribute('id', 'medium-difficulty');
     divLevelIndicatorEl.appendChild(level);
   } else {
     //display level 3
     level.textContent = 'Question ' + questionCounter + ' - Level HARD';
+    level.setAttribute('id', 'hard-difficulty');
     divLevelIndicatorEl.appendChild(level);
   }
 }
