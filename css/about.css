@@ -52,33 +52,50 @@ nav a {
 }
 
 section img {
-  width: auto;
+  margin: 0 auto;
   height: 200px;
 }
 
 #about {
   width: 100%;
-  border: 2px solid black;
+  text-align: center;
+  padding-top: 10px;
 }
 
-.left {
-  width: 48%;
-  float: left;
+section h2 {
+  text-decoration-line: underline;
+  font-weight: bold;
+}
+
+.top {
+  width: 100%;
   margin: 5px;
   text-align: center;
-  border: 2px solid black;
 }
 
-.right {
-  float: right;
-  width: 48%;
+.top div {
+  display: inline-block;
+  height: 100%;
+  margin: 20px 30px;
+  vertical-align: top;
+}
+
+.bottom {
+  width: 100%;
   margin: 5px;
   text-align: center;
-  border: 2px solid black;
 }
 
-.middle {
-  width: 48%;
-  margin: 0 auto;
-  text-align: center;
+.bottom div {
+  display: inline-block;
+  height: 100%;
+  margin: 20px 50px; 
+  vertical-align: top;
+}
+
+p {
+  padding-top: 20px;
+  width: 300px;
+  margin: 5px auto;
+  line-height: 1.5em;
 }
