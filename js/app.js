@@ -21,17 +21,19 @@ function User(username, password) {
   User.allUsers.push(this);
 }
 
+//adding event listener on login form
+formEl.addEventListener('submit', loginHandler);
+
+//if page is refreshed and current user exists, invoke returnUser()
 if(performance.navigation.type === 1 || User.currentUser['name'].length > 0){
   returnUser();
-}else{
-  formEl.addEventListener('submit', loginHandler);
 }
-
 
 // callback function to login form
 // when form is submitted, user name and password will be saved into name and password variables
 // Also, current user name will be set as the name it was entered
 function loginHandler(e) {
+  console.log('prevent default at login handler');
   e.preventDefault();
   var name = e.target.userName.value;
   var password = e.target.password.value;
@@ -43,6 +45,7 @@ function loginHandler(e) {
   for(var x = 0; x < User.allUsers.length; x++) {
     if(User.allUsers[x].username === name.toLowerCase()) {
       User.currentUser['topScore'] = User.allUsers[x].topScore;
+      console.log('are you saving current user?');
       saveCurrentUser();
       welcomeBackGreeting();
       break;
@@ -76,7 +79,6 @@ function saveToLocalstorage(){
 
 //function to pull User.allUsers from localStorage and reassign to global variable User.allUsers
 function checkLocalStorage() {
-  console.log('are you checking local storage?');
   if(localStorage.allUsers) {
     var users = JSON.parse(localStorage.getItem('allUsers'));
     for(var i in users){
@@ -88,7 +90,6 @@ function checkLocalStorage() {
     var currentUser = JSON.parse(localStorage.getItem('currentUser'));
     User.currentUser['name'] = currentUser.name;
     User.currentUser['topScore'] = currentUser.topScore;
-
   }
 }
 
@@ -156,7 +157,6 @@ function returnUser(){
     resetCurrentUserScore();
     saveCurrentUser();
     dispalyLogoutBtn();
-    formEl.addEventListener('submit', loginHandler);
   }
 
 }
