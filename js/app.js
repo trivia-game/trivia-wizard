@@ -54,14 +54,15 @@ function loginHandler(e) {
   // new user greeting message will be printed using user name
   // current user name is saved into localStorage
   if (x === User.allUsers.length){
-    new User(name, password);
+    console.log('create a new user');
+    new User(name.toLowerCase(), password);
     saveToLocalstorage();
     saveCurrentUser();
     greeting();
   }
 
   //synchroize User.allUsers again by pulling from localStorage
-  checkLocalStorage();
+  // checkLocalStorage();
 
   //display logout button
   dispalyLogoutBtn();

@@ -247,12 +247,17 @@ function answerButtonHandler(e) {
       }
     }
     clearCountDown();
-    
+
     soundsArray[2].pause();
     soundsArray[1].play();
-    
+
     // resetCurrentUserScore();
     resetCurrentUserTopScore();
+    console.log('are you saving?');
+    //if user's score is greater than top score, set a new top score
+    if(User.currentUser['score'] > User.currentUser['topScore']){
+      User.currentUser['topScore'] = User.currentUser['score'];
+    }
     saveCurrentUser();
     updateCUToAllUser();
 
@@ -299,6 +304,7 @@ function endingGame(){
   //display current user's name & score
   var nameScore = document.createElement('h2');
   nameScore.textContent = User.currentUser['name'].charAt(0).toUpperCase() + User.currentUser['name'].slice(1) + ', your score is: ' + User.currentUser['score'];
+
 
   // display message to user
   var newHiH3 = document.createElement('h3');
