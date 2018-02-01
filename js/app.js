@@ -105,7 +105,7 @@ function displayButton() {
 function greeting() {
   formEl.innerHTML = '';
   var h3El = document.createElement('h3');
-  h3El.textContent = 'Hello ' + User.currentUser['name'].charAt(0).toUpperCase() + User.currentUser['name'].slice(1);
+  h3El.textContent = 'Hello, ' + User.currentUser['name'].charAt(0).toUpperCase() + User.currentUser['name'].slice(1) + '!';
   formEl.appendChild(h3El);
 }
 
