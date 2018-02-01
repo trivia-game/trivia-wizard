@@ -1,8 +1,7 @@
 'use strict';
+
 // get login-form html element
 var formEl = document.getElementById('login-form');
-//get play-button html element
-var playGameSectionEl = document.getElementById('play-button');
 var divLogOutEl = document.getElementById('logout');
 //creating array for holding all user objects
 User.allUsers = [];
@@ -25,7 +24,7 @@ function User(username, password) {
 formEl.addEventListener('submit', loginHandler);
 
 //if page is refreshed and current user exists, invoke returnUser()
-if(performance.navigation.type === 1 || User.currentUser['name'].length > 0){
+if (performance.navigation.type === 1 || User.currentUser['name'].length > 0) {
   returnUser();
 }
 
@@ -33,7 +32,6 @@ if(performance.navigation.type === 1 || User.currentUser['name'].length > 0){
 // when form is submitted, user name and password will be saved into name and password variables
 // Also, current user name will be set as the name it was entered
 function loginHandler(e) {
-  console.log('prevent default at login handler');
   e.preventDefault();
   var name = e.target.userName.value;
   var password = e.target.password.value;
@@ -45,14 +43,13 @@ function loginHandler(e) {
   for(var x = 0; x < User.allUsers.length; x++) {
     if(User.allUsers[x].username === name.toLowerCase()) {
       User.currentUser['topScore'] = User.allUsers[x].topScore;
-      console.log('are you saving current user?');
       saveCurrentUser();
       welcomeBackGreeting();
       break;
     }
   }
 
-  // if no same name is found in User.allUsers even after the end of for loop, it means it is a new user.
+  // if no name is found in User.allUsers even after the end of for loop, it means it is a new user.
   // new User object will be created and saved into localStorage
   // new user greeting message will be printed using user name
   // current user name is saved into localStorage
@@ -142,8 +139,6 @@ function logOutHandler(e){
 
   //back to login (page reload)
   location.reload();
-
-
 }
 
 function returnUser(){
@@ -158,7 +153,6 @@ function returnUser(){
     saveCurrentUser();
     dispalyLogoutBtn();
   }
-
 }
 
 function resetCurrentUserScore(){
