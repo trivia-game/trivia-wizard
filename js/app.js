@@ -113,7 +113,7 @@ function welcomeBackGreeting() {
   formEl.innerHTML = '';
   var h3El = document.createElement('h3');
   var h4El = document.createElement('h4');
-  h3El.textContent = 'Welcome Back! ' + User.currentUser['name'].charAt(0).toUpperCase() + User.currentUser['name'].slice(1);
+  h3El.textContent = 'Welcome Back, ' + User.currentUser['name'].charAt(0).toUpperCase() + User.currentUser['name'].slice(1) + '!';
   h4El.textContent = 'Your highest score: ' + User.currentUser['topScore'];
   formEl.appendChild(h3El);
   formEl.appendChild(h4El);
