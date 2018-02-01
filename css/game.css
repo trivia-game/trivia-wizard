@@ -194,3 +194,7 @@ button:focus {
 #hard-difficulty {
   color: red;
 }
+
+#question h3 {
+  font-size: 100%;
+}

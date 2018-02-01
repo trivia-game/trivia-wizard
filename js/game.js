@@ -317,7 +317,28 @@ function endingGame(){
   var nameScore = document.createElement('h2');
   nameScore.textContent = User.currentUser['name'].charAt(0).toUpperCase() + User.currentUser['name'].slice(1) + ', your score is: ' + User.currentUser['score'];
 
+  var newHiH3 = document.createElement('h3');
+  if (User.currentUser['score'] === 0) {
+    newHiH3 = document.createElement('h3');
+    newHiH3.textContent = 'Keep learning, grasshopper.';
+  } else if (User.currentUser['score'] < 3) {
+    newHiH3 = document.createElement('h3');
+    newHiH3.textContent = 'You are a Trivia Student...keep learning.';
+  } else if (User.currentUser['score'] < 5) {
+    newHiH3 = document.createElement('h3');
+    newHiH3.textContent = 'You are a Trivia Novice...keep learning.';
+  } else if (User.currentUser['score'] < 7) {
+    newHiH3 = document.createElement('h3');
+    newHiH3.textContent = 'Well done, you are on your way to becoming a Trivia Wizard.';
+  } else if (User.currentUser['score'] < 9) {
+    newHiH3 = document.createElement('h3');
+    newHiH3.textContent = 'You are a Trivia Master! Keep going to reach Trivia Wizard status!'; 
+  } else if (User.currentUser['score'] > 8) {
+    newHiH3 = document.createElement('h3');
+    newHiH3.textContent = 'Congrats, you are a Trivia Wizard!';
+  }
   divQuestionEl.appendChild(nameScore);
+  divQuestionEl.appendChild(newHiH3);
 
   //display play again button
   var playAgainBtn = document.createElement('button');
