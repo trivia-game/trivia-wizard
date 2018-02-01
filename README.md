@@ -3,7 +3,15 @@
 
 For our Code Fellows 201 final group project, we created a trivia game application: Trivia Wizard. We felt this type of game would be a fun way to demonstrate the skillset we developed throughout the course. We started out with the idea of a general trivia game where the questions increase in difficulty as you progress, similar to 'Who Wants to Be a Millionaire?' We found an awesome wizard gif online and 'Trivia Wizard' was born!
 
-Our minimum viable product (MVP) included a login and welcome page, presenting the user with a total of three questions chosen at random from a pool of questions with four multiple choice answers arranged in a random order, and displaying their score at the end. 
+
+Our minimum viable product (MVP) included:
+
+- Login and welcome page, storing the user's info in local storage
+
+- Presenting the user with a total of three questions chosen at random from a pool of questions with four multiple choice answers arranged in a random order
+
+- Displaying the user's score at the end
+
 
 Our stretch goals included:
 
@@ -15,7 +23,7 @@ Our stretch goals included:
 
 - difficulty levels for questions with increasing difficulty
 
-- lifelines (skip a question, 50/50, time extension) - we didn't get to these.
+- lifelines (skip a question, 50/50, time extension) - we didn't get to these...
 
 We set up the login so that the user's name and password are stored in local storage and they are greeted with a 'Welcome back, [user]!' message if they have played before, or a 'Hello, [user]!' if they're a new user. 
 
