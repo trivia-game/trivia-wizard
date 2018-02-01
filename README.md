@@ -46,7 +46,11 @@ The About Us page includes a short bio each of our team members:
 <img width="1261" alt="screen shot 2018-02-01 at 11 49 53 am" src="https://user-images.githubusercontent.com/33847838/35700158-05a5fa68-0747-11e8-89ef-bc0e11d7e7b7.png">
 
 trivia questions from: http://trivia.fyi/categories
+
 sounds from: http://www.orangefreesounds.com/
+
 We used the Meyer Web CSS Reset.
+
 We found the Fisher-Yates Shuffle function on stackoverflow here:
+
 https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
