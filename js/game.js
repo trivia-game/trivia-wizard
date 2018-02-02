@@ -71,9 +71,9 @@ new Question('Victoria Beckham was a member of which all girl English pop group 
 new Question('Released in 1992, what is the best selling soundtrack album of all time?', 'The Bodyguard', ['The Bodyguard', 'Aladdin', 'Gladiator', 'Batman Returns'], 2);
 new Question('"I\'d buy that for a dollar", is a catchphrase from what 1987 action movie set in Detroit, Michigan, in the near future?', 'Robocop', ['The Lost Boys', 'Lethal Weapon', 'Predator', 'Robocop'], 2);
 new Question('As a protest to Hollywood\'s portrayal of Native Americans in film, Marlon Brando declined an Academy Award for his performance in what movie?', 'The Godfather', ['The Godfather', 'Dirty Dancing', 'Ishtar', 'Fatal Attraction'], 2);
-new Question('In Disney\'s 1959 animated film Sleeping Beauty, who is Princess Aurora is betrothed to?', 'Prince Phillip', ['Belle', 'Prince Phillip', 'Prince Naveen', 'Prince Charming'], 2);
+new Question('In Disney\'s 1959 animated film Sleeping Beauty, who is Princess Aurora betrothed to?', 'Prince Phillip', ['Belle', 'Prince Phillip', 'Prince Naveen', 'Prince Charming'], 2);
 new Question('Who produced and directed the American epic aviation war film "Hell\'s Angels", released in 1930?', 'Howard Hughes', ['Howard Hughes', 'William Powell', 'Leslie Howard', 'Fredric Marc'], 2);
-new Question('What was John Candy\'s character\'s name in the in 1987 comedy movie, "Planes, Trains, and Automobiles"?', 'Del Griffith', ['Del Griffith', 'Popeye', 'Frank Drebin', 'Barney Fife'], 3);
+new Question('What was John Candy\'s character\'s name in the 1987 comedy movie, "Planes, Trains, and Automobiles"?', 'Del Griffith', ['Del Griffith', 'Popeye', 'Frank Drebin', 'Barney Fife'], 3);
 new Question('In what year did Nintendo release its first game console in North America?', '1985', ['1985', '1980', '2000', '1995'], 2);
 new Question('American mobster Al Capone was sentenced to 11 years in federal prison for what crime', 'Tax Evasion', ['Tax Evasion', 'Murder', 'Trafficking', 'Kidnapping'], 2);
 new Question('How many people have walked on the moon?', 'Twelve', ['Twelve', 'One', 'Five', 'Fourteen'], 3);
@@ -111,6 +111,16 @@ new Question('What popular beverage once contained cocaine?', 'Coca-Cola', ['Coc
 new Question('What is the first element on the periodic table?', 'Hydrogen', ['Hydrogen', 'Helium', 'Sodium', 'Nitrogen'], 3);
 new Question('What is the main ingredient in guacamole?', 'Avocado', ['Avocado', 'Lettuce', 'Kiwi', 'Honeydew'], 1);
 new Question('The state of Georgia is famous for what fruit?', 'Peach', ['Peach', 'Strawberry', 'Plum', 'Apple'], 1);
+new Question('The Lone Star State is the nickname of what state?', 'Texas', ['Texas', 'California', 'Washington', 'New York'], 1);
+new Question('Steve Jobs and Steve Wozniak founded what company in 1976?', 'Apple', ['Apple', 'Amazon', 'Microsoft', 'Code Fellows'], 1);
+new Question('What country was Nintendo founded in?', 'Japan', ['Japan', 'United States', 'China', 'Germany'], 1);
+new Question('What is the second largest country by land mass?', 'Canada', ['Russia', 'Canada', 'Australia', 'United States'], 1);
+new Question('A panda\'s diet consists almost entirey of what?', 'Bamboo', ['Bamboo', 'Coconuts', 'Blackberries', 'Rodents'], 1);
+new Question('What is the smallest state in the USA?', 'Rhode Island', ['Rhode Island', 'Delaware', 'Vermont', 'Maine'], 1);
+new Question('Area 51 is located in what state?', 'Nevada', ['Nevada', 'California', 'Oregon', 'Washington'], 1);
+new Question('What island does the Statue of Liberty stand on?', 'Liberty Island', ['Liberty Island', 'Ellis Island', 'Manhattan', 'Staten Island'], 1);
+new Question('What language is spoken in Brazil?', 'Portuguese', ['Portuguese', 'Spanish', 'English', 'French'], 1);
+new Question('What ingredient in bread causes it to rise?', 'Yeast', ['Yeast', 'Whey', 'Salt', 'Wheat'], 1);
 
 // random number generator
 function randomNumGenerator(min, max) {
