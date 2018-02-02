@@ -26,7 +26,6 @@ var endGameMsgEl = document.getElementById('endGameMsg');
 var level = document.getElementById('level');
 var divLogOutEl = document.getElementById('logout');
 var rand = 0;
-var divMuteButton = document.getElementById('mute');
 
 function User(username, password) {
   this.username = username;
@@ -399,20 +398,6 @@ function updateCUToAllUser(){
   }
 }
 
-function displayMuteButton(){
-  var muteButton = document.createElement('button');
-  muteButton.innerHTML = 'Mute';
-  divMuteButton.appendChild(muteButton);
-  muteButton.addEventListener('click', muteSounds);
-  muteButton.className = 'mute';
-}
-
-// mute sounds function
-function muteSounds(){
-  for(var i = 0; i < soundsArray.length; i++)
-    soundsArray[i].volume = 0;
-}
-
 function dispalyLogoutBtn(){
   var logOutBtn = document.createElement('button');
   logOutBtn.innerHTML = 'Logout';
@@ -440,7 +425,6 @@ function returnUser() {
     //don't display login form
     //instead display welcome back message
     dispalyLogoutBtn();
-    displayMuteButton();
   }
 }
 
