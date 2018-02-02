@@ -1,0 +1,107 @@
+body {
+  background-color: black;
+  color: bisque;
+}
+
+header {
+  width: 100%;
+  text-align: center;
+  font-size: 23px;
+  font-family: 'Fugaz One', cursive;
+  background-color:  #0c023d;
+  color: blanchedalmond;
+  margin-bottom: 25px;
+}
+
+#header-title {
+  text-align: center;
+  margin-left: 150px;
+}
+
+h1 {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 20px;
+}
+
+header img {
+  width: 150px;
+  display: inline-block;
+  border: #0c023d, solid;
+}
+
+header img.flipped {
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+  
+nav {
+  float: right;
+  width: 110px;
+  padding: 20px;
+  padding-top: 30px;
+
+}
+
+nav a {
+  color: rgb(207, 88, 20);
+  display: block;
+}
+
+section img {
+  margin: 0 auto;
+  height: 200px;
+  border: 6px ridge white;
+}
+
+section img:hover {
+  transform: scale(1.1);
+}
+
+#about {
+  width: 100%;
+  text-align: center;
+  padding-top: 10px;
+}
+
+section h2 {
+  text-decoration-line: underline;
+  font-weight: bold;
+}
+
+.top {
+  width: 100%;
+  margin: 5px;
+  text-align: center;
+}
+
+.top div {
+  display: inline-block;
+  height: 100%;
+  margin: 20px 30px;
+  vertical-align: top;
+}
+
+.bottom {
+  width: 100%;
+  margin: 5px;
+  text-align: center;
+}
+
+.bottom div {
+  display: inline-block;
+  height: 100%;
+  margin: 20px 50px; 
+  vertical-align: top;
+}
+
+p {
+  padding-top: 20px;
+  width: 300px;
+  margin: 5px auto;
+  line-height: 1.5em;
+}

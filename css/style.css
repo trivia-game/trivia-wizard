@@ -1,0 +1,165 @@
+/* Fonts from Google Fonts--
+font-family: 'Fugaz One', cursive;
+font-family: 'Lilita One', cursive;
+font-family: 'Sniglet', cursive; */
+
+body {
+  background-color: black;
+  color: bisque;
+}
+
+header {
+  width: 100%;
+  text-align: center;
+  font-size: 23px;
+  font-family: 'Fugaz One', cursive;
+  background-color:  #0c023d;
+  color: blanchedalmond;
+  margin-bottom: 25px;
+}
+
+#header-title {
+  text-align: center;
+  margin-left: 150px;
+}
+
+h1 {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 20px;
+}
+
+header img {
+  width: 150px;
+  display: inline-block;
+  border: #0c023d, solid;
+}
+
+header img.flipped {
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+  
+nav {
+  float: right;
+  width: 110px;
+  padding: 20px;
+  padding-top: 30px;
+}
+
+nav a {
+  color: rgb(207, 88, 20);
+  display: block;
+}
+
+/* end of header start of body */
+section {
+  font-family: 'Lilita One', cursive;
+  width: 70%;
+  margin: 0 auto;
+  align-content: center;
+}
+
+section#play-button, h2, p {
+  font-family: 'Sniglet', cursive;
+  font-size: 20px;
+  letter-spacing: 1px;
+  word-spacing: 4px;
+}
+
+#login-form {
+  height: 150px;
+  text-align: center;
+  font-size: 25px;
+  margin: 0 auto;
+  padding-top: 5px; 
+  border-radius: 10px;
+  font-family: 'Sniglet', cursive;
+}
+
+form input[type=text] {
+  color: blueviolet;
+  font-size: 20px;
+  border-radius: 10px;
+}
+
+form input[type=password] {
+  font-size: 20px;
+  border-radius: 10px;
+}
+
+form label {
+  display: block;
+  font-size: 30px;
+  text-align: center;
+}
+
+form input {
+  width: 250px;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+}
+
+form button {
+  width: 220px;
+  height: 50px;
+  margin: 5px auto;
+  font-size: 20px;
+  background-color: rgb(47, 47, 252);
+  border: 1px solid white;
+  border-radius: 10px;
+  color: white;
+}
+
+form button:hover {
+  background-color: rgb(44, 109, 252);
+  border: 3px solid white;
+}
+
+footer {
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  background-color: rgb(65, 4, 100);
+  color: blanchedalmond;
+  padding: 10px;
+}
+
+/* Play Game Button */
+section#play-button button {
+  width: 200px;
+  height: 80px;
+  margin: 20px auto;
+  font-size: 20px;
+  background-color: blueviolet;
+  color: blanchedalmond;
+  border-radius: 15px;
+  vertical-align: middle;
+}
+
+section#play-button {
+  margin: 90px auto;
+  text-align: center;
+  background-color: rgb(3, 129, 10);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.log-out{
+  width: 100%;
+  height: 25px;
+  font-size: 18px;
+  background-color: rgb(207, 88, 20);;
+  border: 1px solid white;
+  border-radius: 10px;
+  color: white;
+}
+
+button#login {
+  margin: 35px auto;
+}

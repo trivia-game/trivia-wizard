@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="reset" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Fugaz+One|Sniglet|Lilita+One" rel="stylesheet">
+    <title>Trivia Game</title>
+    <audio src="sound/opening.mp3" autoplay="true"></audio>
+  </head>
+  <header>
+    <div id="header-title">
+      <img src="img/wizard-clipart.gif">
+      <h1>Trivia Wizard</h1>
+      <img class="flipped" src="img/wizard-clipart.gif">
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <div id="logout"></div>
+      </nav>
+    </div>
+  </header>
+  <body>
+    <section>
+      <form id="login-form">
+        <div class="box">
+          <label for="userName">User Name</label>
+          <input name="userName" type="text">
+          <label for="password">Password</label>
+          <input name="password" type="password">
+          <button id="login">Login</button>
+        </div>
+      
+      </form>
+    </section>
+    <section id="play-button">
+      <h2>Welcome to Trivia Wizard!</h2>
+      <p>Test your knowledge with questions about movies, music and more. Select the correct answer and move on to the next question. Miss the answer and the game is over. Good luck!</p>
+    </section>
+    <script type="text/javascript" src="js/app.js"></script>
+  </body>
+  <footer>
+    <p>Copyright Trivia Wizard &copy;2018</p>
+  </footer>
+</html>
