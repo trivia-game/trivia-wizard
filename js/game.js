@@ -71,7 +71,7 @@ new Question('Victoria Beckham was a member of which all girl English pop group 
 new Question('Released in 1992, what is the best selling soundtrack album of all time?', 'The Bodyguard', ['The Bodyguard', 'Aladdin', 'Gladiator', 'Batman Returns'], 2);
 new Question('"I\'d buy that for a dollar", is a catchphrase from what 1987 action movie set in Detroit, Michigan, in the near future?', 'Robocop', ['The Lost Boys', 'Lethal Weapon', 'Predator', 'Robocop'], 2);
 new Question('As a protest to Hollywood\'s portrayal of Native Americans in film, Marlon Brando declined an Academy Award for his performance in what movie?', 'The Godfather', ['The Godfather', 'Dirty Dancing', 'Ishtar', 'Fatal Attraction'], 2);
-new Question('In Disney\'s 1959 animated film Sleeping Beauty, who is Princess Aurora is betrothed to?', 'Prince Phillip', ['Belle', 'Prince Phillip', 'Prince Naveen', 'Prince Charming'], 2);
+new Question('In Disney\'s 1959 animated film Sleeping Beauty, who is Princess Aurora betrothed to?', 'Prince Phillip', ['Belle', 'Prince Phillip', 'Prince Naveen', 'Prince Charming'], 2);
 new Question('Who produced and directed the American epic aviation war film "Hell\'s Angels", released in 1930?', 'Howard Hughes', ['Howard Hughes', 'William Powell', 'Leslie Howard', 'Fredric Marc'], 2);
 new Question('What was John Candy\'s character\'s name in the 1987 comedy movie, "Planes, Trains, and Automobiles"?', 'Del Griffith', ['Del Griffith', 'Popeye', 'Frank Drebin', 'Barney Fife'], 3);
 new Question('In what year did Nintendo release its first game console in North America?', '1985', ['1985', '1980', '2000', '1995'], 2);
