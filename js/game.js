@@ -104,6 +104,13 @@ new Question('What is Michael J Fox\'s middle name?', 'Andrew', ['Andrew', 'Jose
 new Question('What city is known as the windy city?', 'Chicago', ['Chicago', 'New York', 'Seattle', 'Boston'], 1);
 new Question('How many hearts does an octopus have?', 'Three', ['One', 'Two', 'Three', 'Four'], 3);
 new Question('An Alaskan Malamute is a type of what?', 'Dog', ['Dog', 'Cat', 'Squirrel', 'Whale'], 3);
+new Question('In what city is the tallest building in the world located?', 'Dubai', ['Dubai', 'Shanghai', 'Tokyo', 'Seoul'], 3);
+new Question('How many stripes are on the U.S. flag?', 'Thirteen', ['Fourteen', 'Thirteen', 'Fifteen', 'Eleven'], 2);
+new Question('Who directed the original Star Wars in 1977?', 'George Lucas', ['George Lucas', 'Steven Spielberg', 'JJ Abrams', 'Han Solo'], 2);
+new Question('What popular beverage once contained cocaine?', 'Coca-Cola', ['Coca-Cola', 'Pepsi', 'Mountain Dew', 'Cream Soda'], 1);
+new Question('What is the first element on the periodic table?', 'Hydrogen', ['Hydrogen', 'Helium', 'Sodium', 'Nitrogen'], 3);
+new Question('What is the main ingredient in guacamole?', 'Avocado', ['Avocado', 'Lettuce', 'Kiwi', 'Honeydew'], 1);
+new Question('The state of Georgia is famous for what fruit?', 'Peach', ['Peach', 'Strawberry', 'Plum', 'Apple'], 1);
 
 // random number generator
 function randomNumGenerator(min, max) {
