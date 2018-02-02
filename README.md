@@ -1,6 +1,8 @@
 # trivia-wizard
 201 final project
 
+https://trivia-game.github.io/trivia-wizard/
+
 For our Code Fellows 201 final group project, we created a trivia game application: Trivia Wizard. We felt this type of game would be a fun way to demonstrate the skillset we developed throughout the course. We started out with the idea of a general trivia game where the questions increase in difficulty as you progress, similar to 'Who Wants to Be a Millionaire?' We found an awesome wizard gif online and 'Trivia Wizard' was born!
 
 
