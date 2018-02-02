@@ -61,6 +61,20 @@ nav a {
   color: white;
 }
 
+.mute {
+  width: 100px;
+  height: 25px;
+  font-size: 18px;
+  background-color: rgb(207, 88, 20);;
+  border: 1px solid white;
+  border-radius: 10px;
+  color: white;
+  float: left;
+  margin-top: 100px;
+  margin-left: 20px;
+  
+}
+
 section {
   text-align: center;
   padding-top: 20px;
