@@ -52,7 +52,7 @@ nav {
 }
 
 nav a {
-  color: rgb(207, 88, 20);
+  color: rgb(255, 168, 86);
   display: block;
 }
 
@@ -154,7 +154,7 @@ section#play-button {
   width: 100%;
   height: 25px;
   font-size: 18px;
-  background-color: rgb(207, 88, 20);;
+  background-color: rgb(255, 168, 86);
   border: 1px solid white;
   border-radius: 10px;
   color: white;

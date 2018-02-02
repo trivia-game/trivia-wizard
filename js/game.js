@@ -337,10 +337,10 @@ function endingGame(){
   } else if (User.currentUser['score'] < 7) {
     newHiH3 = document.createElement('h3');
     newHiH3.textContent = 'Well done, you are on your way to becoming a Trivia Wizard.';
-  } else if (User.currentUser['score'] < 9) {
+  } else if (User.currentUser['score'] < 10) {
     newHiH3 = document.createElement('h3');
     newHiH3.textContent = 'You are a Trivia Master! Keep going to reach Trivia Wizard status!';
-  } else if (User.currentUser['score'] > 8) {
+  } else if (User.currentUser['score'] > 9) {
     newHiH3 = document.createElement('h3');
     soundsArray[4].play();
     newHiH3.textContent = 'Congrats, you are a Trivia Wizard!';
@@ -364,7 +364,7 @@ function pageReload(){
 }
 
 function countDownTimer(){
-  var timeleft = 10;
+  var timeleft = 15;
   downloadTimer = setInterval(function() {
     document.getElementById('timer').innerHTML = --timeleft;
 
